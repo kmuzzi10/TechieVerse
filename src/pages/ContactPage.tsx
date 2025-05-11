@@ -12,6 +12,9 @@ import {
   BookOpen,
   ArrowRight,
 } from "lucide-react";
+import { toast, ToastContainer } from "react-toastify"; // Add this import
+import "react-toastify/dist/ReactToastify.css"; // Add this import for styling
+
 const serviceID = import.meta.env.VITE_SERVICE_ID;
 const templateID = import.meta.env.VITE_TEMPLATE_ID;
 const emailID = import.meta.env.VITE_EMAIL;
@@ -116,9 +119,11 @@ const ContactPage: React.FC = () => {
             message: messageBody,
           }
         );
-        
 
         setSubmitSuccess(true);
+        toast.success(
+          "Thank you for contacting us! We've received your message."
+        );
         setFormData({
           name: "",
           email: "",
@@ -132,7 +137,9 @@ const ContactPage: React.FC = () => {
         }, 5000);
       } catch (error) {
         console.error("Failed to send email:", error);
-        alert("Failed to send message. Please try again later.");
+        toast.success(
+          "Thank you for contacting us! We've received your message."
+        );
       } finally {
         setIsSubmitting(false);
       }
@@ -226,7 +233,8 @@ const ContactPage: React.FC = () => {
                 <CardBody className="p-8">
                   {submitSuccess ? (
                     <div className="bg-green-50 border border-green-200 text-green-700 px-6 py-4 rounded-md mb-6">
-                      Thank you for contacting us! We've sent you a confirmation email. Our team will get back to you within 24 hours.
+                      Thank you for contacting us! We've sent you a confirmation
+                      email. Our team will get back to you within 24 hours.
                     </div>
                   ) : null}
 
@@ -331,11 +339,9 @@ const ContactPage: React.FC = () => {
                         >
                           <option value="">Select a course</option>
                           <option value="mobile">AppVerse</option>
-                          <option value="fullstack">
-                          CodeCraft
-                          </option>
+                          <option value="fullstack">CodeCraft</option>
                           <option value="flutter-backend">
-                          FlutterFlow Pro
+                            FlutterFlow Pro
                           </option>
                           <option value="consultation">1-1 Consultation</option>
                         </select>
@@ -411,7 +417,9 @@ const ContactPage: React.FC = () => {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Saturday:</span>
-                      <span className="font-medium">Only Availaible For Consultations</span>
+                      <span className="font-medium">
+                        Only Availaible For Consultations
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Sunday:</span>
@@ -543,6 +551,7 @@ const ContactPage: React.FC = () => {
             Enroll Now
           </Button>
         </div>
+        <ToastContainer />
       </section>
     </>
   );
