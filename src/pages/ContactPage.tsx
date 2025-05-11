@@ -60,28 +60,31 @@ const ContactPage: React.FC = () => {
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
-
+  
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
     }
-
+  
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Email is invalid";
     }
-
+  
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone number is required";
+    } else if (!/^\d{11}$/.test(formData.phone)) {  // Ensuring exactly 11 digits
+      newErrors.phone = "Phone number must be 11 digits";
     }
-
+  
     if (!formData.course) {
       newErrors.course = "Please select a course";
     }
-
+  
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -310,7 +313,7 @@ const ContactPage: React.FC = () => {
                           className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 ${
                             errors.phone ? "border-red-500" : "border-gray-300"
                           }`}
-                          placeholder="+92 XXX XXXXXXX"
+                          placeholder="03 XX XXXXXXX"
                           required
                         />
                         {errors.phone && (
