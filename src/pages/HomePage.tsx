@@ -42,54 +42,55 @@ const HomePage: React.FC = () => {
 
   const testimonials = [
     {
-      name: "Ahmed Khan",
-      role: "Mobile Developer at TechSolutions",
+      name: "Ahsan Raza",
+      role: "Mobile App Developer at AppCraft",
       content:
-        "TechieVerse completely transformed my career. I went from knowing basic programming to becoming a full-time mobile developer within 6 months. The instructors are incredible!",
+        "TechieVerse boosted my confidence and skills immensely. The real-world projects and mentorship helped me land my dream job faster than I expected.",
       image:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
-      name: "hammad Khan",
-      role: "Mobile Developer at TechSolutions",
+      name: "Mariam Siddiqui",
+      role: "Frontend Developer at CodeNest",
       content:
-        "TechieVerse completely transformed my career. I went from knowing basic programming to becoming a full-time mobile developer within 6 months. The instructors are incredible!",
+        "The learning experience at TechieVerse was seamless. The instructors were always available and the projects gave me a deep understanding of frontend technologies.",
       image:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
-      name: "Ahmed Khan",
-      role: "Mobile Developer at TechSolutions",
+      name: "Hassan Mehmood",
+      role: "React Native Developer at DigiApps",
       content:
-        "TechieVerse completely transformed my career. I went from knowing basic programming to becoming a full-time mobile developer within 6 months. The instructors are incredible!",
+        "From struggling with syntax to deploying apps on the Play Store—TechieVerse made it all possible. Their support system is top-notch.",
       image:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
-      name: "Ahmed Khan",
-      role: "Mobile Developer at TechSolutions",
+      name: "Areeba Noor",
+      role: "Software Engineer at DevLogix",
       content:
-        "TechieVerse completely transformed my career. I went from knowing basic programming to becoming a full-time mobile developer within 6 months. The instructors are incredible!",
+        "TechieVerse provided me with a clear path to becoming a software engineer. The mock interviews and career support were a game changer.",
       image:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
-      name: "Sara Ahmed",
-      role: "Full Stack Engineer",
+      name: "Fahad Javed",
+      role: "Full Stack Developer at ByteForce",
       content:
-        "The 1-1 consultation model at TechieVerse makes a huge difference. I got personalized guidance that helped me overcome challenging concepts that I had struggled with for months.",
+        "I was amazed by the hands-on teaching methodology. TechieVerse turned my passion into a profession and gave me the tools to excel.",
       image:
-        "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
-      name: "Zain Ali",
-      role: "Flutter Developer at StartupX",
+      name: "Nimra Shah",
+      role: "Flutter Developer at SoftTree",
       content:
-        "After completing the Flutter with Firebase course, I secured a job at a startup with a competitive salary. The practical approach to teaching at TechieVerse made all the difference.",
+        "The personalized feedback and hands-on Flutter projects helped me build a strong portfolio and land a top Flutter developer position. Truly grateful for TechieVerse!",
       image:
-        "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600",
-    },
+        "https://images.pexels.com/photos/4587660/pexels-photo-4587660.jpeg?auto=compress&cs=tinysrgb&w=600",
+    }    
   ];
+  
 
   return (
     <>

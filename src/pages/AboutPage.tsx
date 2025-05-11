@@ -4,6 +4,9 @@ import Card, { CardBody } from "../components/ui/Card";
 import Button from "../components/ui/Button";
 import { Video, Award, Briefcase, Laptop2Icon } from "lucide-react";
 import imgage1 from "../assets/group-young-business-people-working-office.jpg";
+import avatar1 from "../assets/avatar1.png"
+import avatar2 from "../assets/avatar2.png"
+import avatar3 from "../assets/avatar3.png"
 
 const AboutPage: React.FC = () => {
   useEffect(() => {
@@ -33,7 +36,7 @@ const AboutPage: React.FC = () => {
       icon: <Laptop2Icon size={32} className="text-secondary-500" />,
       title: "Job Placements",
       description:
-      "We facilitate job placements for our top-performing students in leading industries, providing opportunities to interview with potential employers and launch their careers.",
+        "We facilitate job placements for our top-performing students in leading industries, providing opportunities to interview with potential employers and launch their careers.",
     },
   ];
 
@@ -42,22 +45,19 @@ const AboutPage: React.FC = () => {
       name: "Muzammil Ahmed Khan",
       role: "Software Engineer",
       bio: "With over 4+ years of experience in both backend and frontend development, Muzammil has worked with top startups and enterprises. He brings a unique combination of technical expertise and a passion for helping students succeed in real-world software development. His freelance experience ensures he can provide insights into working in dynamic, fast-paced environments, preparing you for the tech industry’s diverse challenges.",
-      image:
-        "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600", // Placeholder image
+      image: avatar1
     },
     {
       name: "Esha Khalid",
       role: "Frontend Developer",
       bio: "Esha is a creative frontend developer with 2+ years of experience, bringing a keen eye for design and user experience to every project. She specializes in building dynamic, responsive websites using the latest frameworks. With a passion for creating intuitive and visually appealing user interfaces, Esha loves guiding students through the front-end development process and equipping them with the skills to craft standout web experiences. She also loves sharing tips on improving efficiency and design best practices.",
-      image:
-        "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=600", // Placeholder image
+      image: avatar2
     },
     {
       name: "Khizar Hussain Siddiqui",
       role: "Flutter Developer",
       bio: "Khizar is a seasoned Flutter developer with 5+ years of experience, specializing in building high-performance, cross-platform mobile apps. He has worked on a variety of projects, from e-commerce to social media apps, always focusing on delivering excellent user experiences. Khizar is passionate about mobile development and loves helping students master Flutter, offering practical insights from his years of experience. He emphasizes the importance of clean code, app performance, and building apps that stand out in today’s competitive app market.",
-      image:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600", // Placeholder image
+      image: avatar3
     },
   ];
   
@@ -100,7 +100,6 @@ const AboutPage: React.FC = () => {
       color: "border-primary-600",
     },
   ];
-  
 
   return (
     <>
@@ -192,7 +191,7 @@ const AboutPage: React.FC = () => {
                   <img
                     src={instructor.image}
                     alt={instructor.name}
-                    className="w-full h-56 object-cover"
+                    className="w-48 h-48 object-cover rounded-full mx-auto mb-4"
                   />
                 </div>
                 <CardBody className="p-6">

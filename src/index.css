@@ -101,7 +101,6 @@
   }
 }
 
-
 .animate-on-scroll {
   opacity: 1;
   transform: translateY(0);
@@ -111,6 +110,19 @@
 .animate-on-scroll.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Make sure the animation works on mobile/tablet */
+@media (hover: none) and (pointer: coarse) {
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
