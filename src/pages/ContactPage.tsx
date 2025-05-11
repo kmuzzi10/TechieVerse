@@ -17,7 +17,7 @@ const templateID = import.meta.env.VITE_TEMPLATE_ID;
 const emailID = import.meta.env.VITE_EMAIL;
 const ContactPage: React.FC = () => {
   useEffect(() => {
-    document.title = "Contact Us - TechHub Training Centre";
+    document.title = "Contact Us - TechieVerse Training Academy";
 
     // TODO: Replace with your actual EmailJS public key from https://dashboard.emailjs.com/admin/account
     emailjs.init("IlHMW98n5-zZrg5Jy");

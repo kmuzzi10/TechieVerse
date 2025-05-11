@@ -6,7 +6,7 @@ import { CheckCircle, Users, Award, Briefcase, Monitor, Code, Package, DollarSig
 
 const ServicesPage: React.FC = () => {
   useEffect(() => {
-    document.title = 'Services - TechieVerse Training Centre';
+    document.title = 'Services - TechieVerse Training Academy';
   }, []);
 
   const courses = [

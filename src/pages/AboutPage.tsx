@@ -4,13 +4,13 @@ import Card, { CardBody } from "../components/ui/Card";
 import Button from "../components/ui/Button";
 import { Video, Award, Briefcase, Laptop2Icon } from "lucide-react";
 import imgage1 from "../assets/group-young-business-people-working-office.jpg";
-import avatar1 from "../assets/avatar1.png"
-import avatar2 from "../assets/avatar2.png"
-import avatar3 from "../assets/avatar3.png"
+import avatar1 from "../assets/avatar1.png";
+import avatar2 from "../assets/avatar2.png";
+import avatar3 from "../assets/avatar3.png";
 
 const AboutPage: React.FC = () => {
   useEffect(() => {
-    document.title = "About Us - TechieVerse Training Centre";
+    document.title = "About Us - TechieVerse Training Academy";
   }, []);
 
   const approaches = [
@@ -60,7 +60,6 @@ const AboutPage: React.FC = () => {
       image: avatar3
     },
   ];
-  
 
   const timelineSteps = [
     {
@@ -144,6 +143,7 @@ const AboutPage: React.FC = () => {
                 src={imgage1}
                 alt="Tech education mission"
                 className="rounded-lg shadow-lg"
+                loading="lazy"
               />
             </div>
           </div>
@@ -192,6 +192,7 @@ const AboutPage: React.FC = () => {
                     src={instructor.image}
                     alt={instructor.name}
                     className="w-48 h-48 object-cover rounded-full mx-auto mb-4"
+                    loading="lazy"
                   />
                 </div>
                 <CardBody className="p-6">
@@ -262,22 +263,13 @@ const AboutPage: React.FC = () => {
             Join Our Tech Community
           </h2>
           <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto animate-on-scroll">
-            Start your journey to becoming a tech professional with TechieVerse
-            Training Centre.
+            Ready to take the next step in your tech career? Enroll in one of
+            our courses today and start learning from experts who will help you
+            succeed in the tech industry.
           </p>
-          <div className="flex flex-wrap justify-center gap-4 animate-on-scroll">
-            <Button to="/services" variant="accent" size="lg">
-              Explore Courses
-            </Button>
-            <Button
-              to="/contact"
-              variant="outline"
-              size="lg"
-              className="border-white text-white hover:bg-white/10"
-            >
-              Contact Us
-            </Button>
-          </div>
+          <Button to="/contact" variant="primary">
+            Get in Touch
+          </Button>
         </div>
       </section>
     </>

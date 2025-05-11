@@ -10,7 +10,7 @@ import TestimonialSlider from "../components/ui/TestimonialSlider";
 const HomePage: React.FC = () => {
   useEffect(() => {
     document.title =
-      "TechieVerse Training Centre - Empowering Future Tech Leaders";
+      "Empowering Future Tech Leaders - TechieVerse Training Academy";
   }, []);
 
   const features = [
