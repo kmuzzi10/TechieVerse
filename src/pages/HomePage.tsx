@@ -1,5 +1,13 @@
 import React, { useEffect } from "react";
-import { ArrowRight, BookOpen, Users, Award, Briefcase } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  Users,
+  Award,
+  Briefcase,
+  UserCheck,
+  Laptop2,
+} from "lucide-react";
 import Button from "../components/ui/Button";
 import SectionTitle from "../components/ui/SectionTitle";
 import Card, { CardBody } from "../components/ui/Card";
@@ -37,6 +45,18 @@ const HomePage: React.FC = () => {
       title: "Paid Internships",
       description:
         "Top-performing students get connected to paid internship opportunities with our partner companies.",
+    },
+    {
+      icon: <UserCheck size={32} className="text-primary-500" />,
+      title: "Land a Job",
+      description:
+        "Top-performing students often receive full-time job offers from our partner companies after completing their internships.",
+    },
+    {
+      icon: <Laptop2 size={32} className="text-primary-500" />,
+      title: "Consultancy Session",
+      description:
+        "Get a consultancy session with a Silicon Valley software engineer to accelerate your career growth.",
     },
   ];
 
@@ -88,74 +108,56 @@ const HomePage: React.FC = () => {
         "The personalized feedback and hands-on Flutter projects helped me build a strong portfolio and land a top Flutter developer position. Truly grateful for TechieVerse!",
       image:
         "https://images.pexels.com/photos/4587660/pexels-photo-4587660.jpeg?auto=compress&cs=tinysrgb&w=600",
-    }    
+    },
   ];
-  
 
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-16 bg-gradient-to-br from-primary-800 to-secondary-800 text-white overflow-hidden">
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-dark opacity-40 z-0"></div>
-
-        {/* Giant rotated background image */}
-        <div className="absolute inset-0 flex justify-center items-center z-0 pointer-events-none">
-          <img
-            src={homePic}
-            alt="Tech students background"
-            className="w-[1000px] max-w-none opacity-10 brightness-10 transform-gpu rotate-[-15deg] scale-125"
-          />
-        </div>
-
-        {/* Main content */}
-        <div className="container-custom relative z-10 py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="animate-on-scroll">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                Empowering Future Tech Leaders
-              </h1>
-              <p className="text-lg md:text-xl mb-8 text-gray-100">
-                Learn Mobile & Fullstack Development from industry experts
-                through our online training programs.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button to="/contact" variant="accent" size="lg">
-                  Enroll Now
-                </Button>
-                <Button
-                  to="/services"
-                  variant="outline"
-                  size="lg"
-                  className="border-white text-white hover:bg-white/10"
-                >
-                  Explore Courses
-                </Button>
-              </div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 animate-pulse-slow"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-500/5 via-transparent to-transparent animate-pulse-slow"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_var(--tw-gradient-stops))] from-secondary-500/5 via-transparent to-transparent animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+        <div className="container-custom relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-on-scroll dark:text-white bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500">
+              Transform Your Future with Tech Education
+            </h1>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 animate-on-scroll">
+              Join our comprehensive training programs and master the skills needed for a successful career in technology.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
+              <Button variant="primary" size="lg" className="animate-float hover:scale-105 transition-transform duration-300">
+                Get Started
+              </Button>
+              <Button variant="outline" size="lg" className="hover:scale-105 transition-transform duration-300">
+                Learn More
+              </Button>
             </div>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-gray-900 to-transparent"></div>
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="section bg-light">
+      <section className="section bg-light dark:bg-gray-900">
         <div className="container-custom">
           <SectionTitle
             title="Why Choose TechieVerse?"
             subtitle="Our unique approach to tech education ensures you get not just theory, but practical skills you can apply immediately."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <Card key={index} className="h-full animate-on-scroll">
                 <CardBody className="flex flex-col items-center text-center p-6">
                   <div className="mb-4 p-3 bg-primary-50 rounded-full">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">
+                  <h3 className="text-xl font-semibold mb-3 dark:text-white">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600">{feature.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
                 </CardBody>
               </Card>
             ))}
@@ -164,7 +166,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Courses Overview Section */}
-      <section className="section bg-gray-50">
+      <section className="section bg-gray-50 dark:bg-gray-800">
         <div className="container-custom">
           <SectionTitle
             title="Our Courses"
@@ -193,7 +195,7 @@ const HomePage: React.FC = () => {
             />
 
             <CourseCard
-              title="🚀 FlutterFlow Pro: From UI to Backend Brillianced"
+              title="🚀 FlutterFlow Pro: From UI to Backend Brilliance"
               technologies="Flutter + MERN Stack"
               duration="8 months"
               frequency="2 classes/week"
@@ -212,7 +214,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="section bg-light">
+      <section className="section bg-light dark:bg-gray-900">
         <div className="container-custom">
           <SectionTitle
             title="Student Success Stories"
@@ -225,10 +227,10 @@ const HomePage: React.FC = () => {
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
         <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-on-scroll">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-on-scroll dark:text-white">
             Ready to Start Your Tech Journey?
           </h2>
-          <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto animate-on-scroll">
+          <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto animate-on-scroll dark:text-gray-200">
             Enroll today and take the first step towards becoming a tech
             professional. Our next batch starts soon!
           </p>

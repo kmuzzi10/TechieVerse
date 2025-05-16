@@ -24,7 +24,7 @@ const ServicesPage: React.FC = () => {
         'Real-time database with Firebase',
         'Authentication and cloud functions',
         'REST API integration',
-        'State management with Provider and Bloc',
+        'State management with Provider and GetX',
         'Publishing apps to App Store and Play Store'
       ]
     },
@@ -127,7 +127,7 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* Courses Section */}
-      <section className="section bg-white">
+      <section className="section bg-white dark:bg-gray-900">
         <div className="container-custom">
           <SectionTitle 
             title="Training Programs" 
@@ -142,35 +142,35 @@ const ServicesPage: React.FC = () => {
                   <CardBody className="p-8">
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                       <div className="lg:col-span-2">
-                        <h3 className="text-2xl font-bold mb-3">{course.title}</h3>
-                        <p className="text-lg text-primary-600 mb-4">{course.technologies}</p>
-                        <p className="text-gray-600 mb-6">{course.description}</p>
+                        <h3 className="text-2xl font-bold mb-3 dark:text-white">{course.title}</h3>
+                        <p className="text-lg text-primary-600 mb-4 dark:text-white">{course.technologies}</p>
+                        <p className="text-gray-600 mb-6 dark:text-white">{course.description}</p>
                         
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                           {course.features.map((feature, index) => (
                             <div key={index} className="flex items-start space-x-3">
                               <CheckCircle size={18} className="text-green-500 flex-shrink-0 mt-0.5" />
-                              <span className="text-gray-700">{feature}</span>
+                              <span className="text-gray-700 dark:text-white">{feature}</span>
                             </div>
                           ))}
                         </div>
                       </div>
                       
-                      <div className="bg-gray-50 p-6 rounded-lg">
-                        <h4 className="text-lg font-semibold mb-4">Course Details</h4>
+                      <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                        <h4 className="text-lg font-semibold mb-4 dark:text-white">Course Details</h4>
                         
                         <div className="space-y-4 mb-6">
                           <div className="flex items-center space-x-3">
                             <Clock size={18} className="text-primary-500" />
-                            <span><strong>Duration:</strong> {course.duration}</span>
+                            <span className="dark:text-white"><strong>Duration:</strong> {course.duration}</span>
                           </div>
                           <div className="flex items-center space-x-3">
                             <Calendar size={18} className="text-primary-500" />
-                            <span><strong>Frequency:</strong> {course.classes}</span>
+                            <span className="dark:text-white"><strong>Frequency:</strong> {course.classes}</span>
                           </div>
                           <div className="flex items-center space-x-3">
                             <DollarSign size={18} className="text-primary-500" />
-                            <span><strong>Fee:</strong> {course.price}</span>
+                            <span className="dark:text-white"><strong>Fee:</strong> {course.price}</span>
                           </div>
                         </div>
                         
@@ -188,7 +188,7 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* Extra Services Section */}
-      <section className="section bg-gray-50">
+      <section className="section bg-gray-50 dark:bg-gray-800">
         <div className="container-custom">
           <SectionTitle 
             title="Additional Services" 
@@ -202,9 +202,9 @@ const ServicesPage: React.FC = () => {
                   <div className="mb-4 p-3 bg-gray-100 rounded-full inline-block">
                     {service.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                  <p className="text-gray-600 mb-4">{service.description}</p>
-                  <p className="text-primary-600 font-medium">{service.price}</p>
+                  <h3 className="text-xl font-semibold mb-3 dark:text-white">{service.title}</h3>
+                  <p className="text-gray-600 mb-4 dark:text-white">{service.description}</p>
+                  <p className="text-primary-600 font-medium dark:text-white">{service.price}</p>
                 </CardBody>
               </Card>
             ))}
@@ -213,7 +213,7 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* How It Works Section */}
-      <section className="section bg-white">
+      <section className="section bg-white dark:bg-gray-900">
         <div className="container-custom">
           <SectionTitle 
             title="How Our Training Works" 
@@ -228,8 +228,8 @@ const ServicesPage: React.FC = () => {
                     1
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Twice-Weekly Live Classes</h3>
-                    <p className="text-gray-600">Attend interactive classes via Google Meet where you can ask questions in real-time and get immediate feedback.</p>
+                    <h3 className="text-xl font-semibold mb-2 dark:text-white">Twice-Weekly Live Classes</h3>
+                    <p className="text-gray-600 dark:text-white">Attend interactive classes via Google Meet where you can ask questions in real-time and get immediate feedback.</p>
                   </div>
                 </div>
                 
@@ -238,8 +238,8 @@ const ServicesPage: React.FC = () => {
                     2
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Weekly Assignments</h3>
-                    <p className="text-gray-600">Practice what you've learned with practical assignments and mini-projects that build your portfolio.</p>
+                    <h3 className="text-xl font-semibold mb-2 dark:text-white">Weekly Assignments</h3>
+                    <p className="text-gray-600 dark:text-white">Practice what you've learned with practical assignments and mini-projects that build your portfolio.</p>
                   </div>
                 </div>
                 
@@ -248,8 +248,8 @@ const ServicesPage: React.FC = () => {
                     3
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">1-1 Consultation</h3>
-                    <p className="text-gray-600">Schedule individual sessions to get help with concepts you find challenging or to discuss your progress.</p>
+                    <h3 className="text-xl font-semibold mb-2 dark:text-white">1-1 Consultation</h3>
+                    <p className="text-gray-600 dark:text-white">Schedule individual sessions to get help with concepts you find challenging or to discuss your progress.</p>
                   </div>
                 </div>
                 
@@ -258,8 +258,8 @@ const ServicesPage: React.FC = () => {
                     4
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Final Project & Hackathon</h3>
-                    <p className="text-gray-600">Complete a capstone project and participate in our hackathon to apply your skills and connect with industry professionals.</p>
+                    <h3 className="text-xl font-semibold mb-2 dark:text-white">Final Project & Hackathon</h3>
+                    <p className="text-gray-600 dark:text-white">Complete a capstone project and participate in our hackathon to apply your skills and connect with industry professionals.</p>
                   </div>
                 </div>
               </div>
@@ -277,7 +277,7 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* Why We're Different Section */}
-      <section className="section bg-gray-50">
+      <section className="section bg-gray-50 dark:bg-gray-800">
         <div className="container-custom">
           <SectionTitle 
             title="Why Our Courses Are Different" 
@@ -291,8 +291,8 @@ const ServicesPage: React.FC = () => {
                   <div className="mb-4 p-3 bg-primary-50 rounded-full">
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
+                  <h3 className="text-xl font-semibold mb-3 dark:text-white">{item.title}</h3>
+                  <p className="text-gray-600 dark:text-white">{item.description}</p>
                 </CardBody>
               </Card>
             ))}

@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter, GraduationCap } from 
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-dark text-white">
+    <footer className="bg-dark dark:bg-gray-950 text-white dark:text-gray-200">
       <div className="container-custom pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}

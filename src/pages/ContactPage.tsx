@@ -158,7 +158,7 @@ const ContactPage: React.FC = () => {
     {
       icon: <Mail size={24} className="text-primary-500" />,
       title: "Email",
-      content: "blazebyte3@gmail.com",
+      content: "info.techieverse@gmail.com",
     },
     {
       icon: <MapPin size={24} className="text-primary-500" />,
@@ -222,7 +222,7 @@ const ContactPage: React.FC = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="section bg-white">
+      <section className="section bg-white dark:bg-gray-900">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="animate-on-scroll">
@@ -437,7 +437,7 @@ const ContactPage: React.FC = () => {
       </section>
 
       {/* Enrollment Process Section */}
-      <section className="section bg-gray-50">
+      <section className="section bg-gray-50 dark:bg-gray-800">
         <div className="container-custom">
           <SectionTitle
             title="Enrollment Process"
@@ -469,7 +469,7 @@ const ContactPage: React.FC = () => {
       </section>
 
       {/* Google Meet Section */}
-      <section className="section bg-white">
+      <section className="section bg-white dark:bg-gray-900">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="animate-on-scroll">

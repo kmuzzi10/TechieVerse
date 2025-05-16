@@ -44,7 +44,7 @@ const AboutPage: React.FC = () => {
     {
       name: "Muzammil Ahmed Khan",
       role: "Software Engineer",
-      bio: "With over 4+ years of experience in both backend and frontend development, Muzammil has worked with top startups and enterprises. He brings a unique combination of technical expertise and a passion for helping students succeed in real-world software development. His freelance experience ensures he can provide insights into working in dynamic, fast-paced environments, preparing you for the tech industry’s diverse challenges.",
+      bio: "With over 4+ years of experience in both backend and frontend development, Muzammil has worked with top startups and enterprises. He brings a unique combination of technical expertise and a passion for helping students succeed in real-world software development. His freelance experience ensures he can provide insights into working in dynamic, fast-paced environments, preparing you for the tech industry's diverse challenges.",
       image: avatar1
     },
     {
@@ -56,7 +56,7 @@ const AboutPage: React.FC = () => {
     {
       name: "Khizar Hussain Siddiqui",
       role: "Flutter Developer",
-      bio: "Khizar is a seasoned Flutter developer with 5+ years of experience, specializing in building high-performance, cross-platform mobile apps. He has worked on a variety of projects, from e-commerce to social media apps, always focusing on delivering excellent user experiences. Khizar is passionate about mobile development and loves helping students master Flutter, offering practical insights from his years of experience. He emphasizes the importance of clean code, app performance, and building apps that stand out in today’s competitive app market.",
+      bio: "Khizar is a seasoned Flutter developer with 5+ years of experience, specializing in building high-performance, cross-platform mobile apps. He has worked on a variety of projects, from e-commerce to social media apps, always focusing on delivering excellent user experiences. Khizar is passionate about mobile development and loves helping students master Flutter, offering practical insights from his years of experience. He emphasizes the importance of clean code, app performance, and building apps that stand out in today's competitive app market.",
       image: avatar3
     },
   ];
@@ -118,18 +118,18 @@ const AboutPage: React.FC = () => {
       </section>
 
       {/* Mission & Vision Section */}
-      <section className="section bg-white">
+      <section className="section bg-white dark:bg-gray-900">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="animate-on-scroll">
-              <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
-              <p className="text-gray-700 mb-6">
+              <h2 className="text-3xl font-bold mb-6 dark:text-white">Our Mission</h2>
+              <p className="text-gray-700 mb-6 dark:text-gray-300">
                 At TechieVerse Training Centre, our mission is to bridge the gap
                 between theoretical knowledge and practical industry
                 requirements. We empower students with the skills and experience
                 needed to excel in the competitive tech industry.
               </p>
-              <p className="text-gray-700 mb-6">
+              <p className="text-gray-700 mb-6 dark:text-gray-300">
                 We believe in learning by doing, which is why our courses focus
                 heavily on practical projects, real-world applications, and
                 industry best practices.
@@ -151,7 +151,7 @@ const AboutPage: React.FC = () => {
       </section>
 
       {/* Our Approach Section */}
-      <section className="section bg-gray-50">
+      <section className="section bg-gray-50 dark:bg-gray-800">
         <div className="container-custom">
           <SectionTitle
             title="Our Unique Learning Approach"
@@ -165,10 +165,10 @@ const AboutPage: React.FC = () => {
                   <div className="mb-4 p-3 bg-gray-100 rounded-full">
                     {approach.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">
+                  <h3 className="text-xl font-semibold mb-3 dark:text-white">
                     {approach.title}
                   </h3>
-                  <p className="text-gray-600">{approach.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300">{approach.description}</p>
                 </CardBody>
               </Card>
             ))}
@@ -177,7 +177,7 @@ const AboutPage: React.FC = () => {
       </section>
 
       {/* Instructors Section */}
-      <section className="section bg-white">
+      <section className="section bg-white dark:bg-gray-900">
         <div className="container-custom">
           <SectionTitle
             title="Meet Our Instructors"
@@ -196,13 +196,13 @@ const AboutPage: React.FC = () => {
                   />
                 </div>
                 <CardBody className="p-6">
-                  <h3 className="text-xl font-semibold mb-1">
+                  <h3 className="text-xl font-semibold mb-1 dark:text-white">
                     {instructor.name}
                   </h3>
-                  <p className="text-primary-500 font-medium mb-4">
+                  <p className="text-primary-500 font-medium mb-4 dark:text-primary-400">
                     {instructor.role}
                   </p>
-                  <p className="text-gray-600">{instructor.bio}</p>
+                  <p className="text-gray-600 dark:text-gray-300">{instructor.bio}</p>
                 </CardBody>
               </Card>
             ))}
@@ -211,7 +211,7 @@ const AboutPage: React.FC = () => {
       </section>
 
       {/* Student Journey Section */}
-      <section className="section bg-gray-50">
+      <section className="section bg-gray-50 dark:bg-gray-800">
         <div className="container-custom">
           <SectionTitle
             title="Student Journey"
@@ -241,11 +241,11 @@ const AboutPage: React.FC = () => {
                           className={`text-xl font-semibold mb-3 ${step.color.replace(
                             "border",
                             "text"
-                          )}`}
+                          )} dark:text-white`}
                         >
                           {index + 1}. {step.title}
                         </h3>
-                        <p className="text-gray-700">{step.description}</p>
+                        <p className="text-gray-700 dark:text-gray-300">{step.description}</p>
                       </CardBody>
                     </Card>
                   </div>
