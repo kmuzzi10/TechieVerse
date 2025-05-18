@@ -31,16 +31,18 @@ const Navbar: React.FC = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white dark:bg-dark shadow-md py-2' : 'bg-transparent py-4'
+        isScrolled 
+          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-lg py-2' 
+          : 'bg-transparent py-4'
       }`}
     >
       <div className="container-custom flex items-center justify-between">
         <Link
           to="/"
-          className="flex items-center space-x-2 text-primary-600 dark:text-white font-bold text-xl"
+          className="flex items-center space-x-2 text-primary-600 dark:text-white font-bold text-xl hover:scale-105 transition-transform duration-300"
           onClick={closeMenu}
         >
-          <GraduationCap size={28} className="text-primary-500" />
+          <GraduationCap size={28} className="text-primary-500 animate-bounce-slow" />
           <span>TechieVerse</span>
         </Link>
 
@@ -49,10 +51,14 @@ const Navbar: React.FC = () => {
             <Link
               key={link.path}
               to={link.path}
-              className="relative text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300 group"
+              className={`relative text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300 group ${
+                location.pathname === link.path ? 'text-primary-500 dark:text-primary-400 font-medium' : ''
+              }`}
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 dark:bg-primary-400 transition-all duration-300 group-hover:w-full"></span>
+              <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary-500 dark:bg-primary-400 transition-all duration-300 ${
+                location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'
+              }`}></span>
             </Link>
           ))}
 
@@ -71,13 +77,16 @@ const Navbar: React.FC = () => {
             </div>
           </button>
 
-          <Link to="/contact" className="btn btn-primary px-4 py-2">
+          <Link 
+            to="/contact" 
+            className="btn btn-primary px-6 py-2 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
             Enroll Now
           </Link>
         </nav>
 
         <button
-          className="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none"
+          className="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none hover:scale-110 transition-transform duration-300"
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
@@ -86,7 +95,7 @@ const Navbar: React.FC = () => {
       </div>
 
       <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-white dark:bg-dark shadow-md transition-all duration-300 ease-in-out ${
+        className={`md:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-lg transition-all duration-300 ease-in-out ${
           isMenuOpen ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 invisible'
         } overflow-hidden`}
       >
@@ -95,10 +104,10 @@ const Navbar: React.FC = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`font-medium py-2 hover:text-primary-500 transition-colors ${
+              className={`font-medium py-2 px-4 rounded-lg transition-all duration-300 ${
                 location.pathname === link.path
-                  ? 'text-primary-500 font-semibold'
-                  : 'text-gray-700 dark:text-gray-300'
+                  ? 'text-primary-500 font-semibold bg-primary-50 dark:bg-primary-900/20'
+                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
               }`}
               onClick={closeMenu}
             >
@@ -123,7 +132,7 @@ const Navbar: React.FC = () => {
 
           <Link
             to="/contact"
-            className="btn btn-primary px-4 py-2 text-center"
+            className="btn btn-primary px-6 py-2 rounded-full text-center hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
             onClick={closeMenu}
           >
             Enroll Now

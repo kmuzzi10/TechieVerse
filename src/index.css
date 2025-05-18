@@ -3,6 +3,82 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --primary-50: 240 249 255;
+    --primary-100: 224 242 254;
+    --primary-200: 186 230 253;
+    --primary-300: 125 211 252;
+    --primary-400: 56 189 248;
+    --primary-500: 14 165 233;
+    --primary-600: 2 132 199;
+    --primary-700: 3 105 161;
+    --primary-800: 7 89 133;
+    --primary-900: 12 74 110;
+    --primary-950: 8 47 73;
+
+    --secondary-50: 240 249 255;
+    --secondary-100: 224 242 254;
+    --secondary-200: 186 230 253;
+    --secondary-300: 125 211 252;
+    --secondary-400: 56 189 248;
+    --secondary-500: 14 165 233;
+    --secondary-600: 2 132 199;
+    --secondary-700: 3 105 161;
+    --secondary-800: 7 89 133;
+    --secondary-900: 12 74 110;
+    --secondary-950: 8 47 73;
+
+    --accent-50: 240 249 255;
+    --accent-100: 224 242 254;
+    --accent-200: 186 230 253;
+    --accent-300: 125 211 252;
+    --accent-400: 56 189 248;
+    --accent-500: 14 165 233;
+    --accent-600: 2 132 199;
+    --accent-700: 3 105 161;
+    --accent-800: 7 89 133;
+    --accent-900: 12 74 110;
+    --accent-950: 8 47 73;
+  }
+
+  .dark {
+    --primary-50: 8 47 73;
+    --primary-100: 12 74 110;
+    --primary-200: 7 89 133;
+    --primary-300: 3 105 161;
+    --primary-400: 2 132 199;
+    --primary-500: 14 165 233;
+    --primary-600: 56 189 248;
+    --primary-700: 125 211 252;
+    --primary-800: 186 230 253;
+    --primary-900: 224 242 254;
+    --primary-950: 240 249 255;
+
+    --secondary-50: 8 47 73;
+    --secondary-100: 12 74 110;
+    --secondary-200: 7 89 133;
+    --secondary-300: 3 105 161;
+    --secondary-400: 2 132 199;
+    --secondary-500: 14 165 233;
+    --secondary-600: 56 189 248;
+    --secondary-700: 125 211 252;
+    --secondary-800: 186 230 253;
+    --secondary-900: 224 242 254;
+    --secondary-950: 240 249 255;
+
+    --accent-50: 8 47 73;
+    --accent-100: 12 74 110;
+    --accent-200: 7 89 133;
+    --accent-300: 3 105 161;
+    --accent-400: 2 132 199;
+    --accent-500: 14 165 233;
+    --accent-600: 56 189 248;
+    --accent-700: 125 211 252;
+    --accent-800: 186 230 253;
+    --accent-900: 224 242 254;
+    --accent-950: 240 249 255;
+  }
+
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
@@ -43,27 +119,39 @@
 
 @layer components {
   .container-custom {
-    @apply container mx-auto px-4 md:px-6 lg:px-8;
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
   }
 
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-md font-medium transition-all duration-300;
+    @apply inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
 
   .btn-primary {
-    @apply bg-primary-500 text-white hover:bg-primary-600 shadow-md hover:shadow-lg;
+    @apply bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500;
   }
 
   .btn-secondary {
-    @apply bg-secondary-500 text-white hover:bg-secondary-600 shadow-md hover:shadow-lg;
+    @apply bg-secondary-500 text-white hover:bg-secondary-600 focus:ring-secondary-500;
   }
 
   .btn-accent {
-    @apply bg-accent-500 text-white hover:bg-accent-600 shadow-md hover:shadow-lg;
+    @apply bg-accent-500 text-white hover:bg-accent-600 focus:ring-accent-500;
   }
 
   .btn-outline {
-    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-50;
+    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white focus:ring-primary-500;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+
+  .btn-md {
+    @apply px-4 py-2 text-base;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 text-lg;
   }
 
   .card {
@@ -71,7 +159,7 @@
   }
 
   .section {
-    @apply py-12 md:py-16 lg:py-20 relative overflow-hidden;
+    @apply py-16 md:py-24;
   }
 
   .section::before {
@@ -79,9 +167,9 @@
     @apply absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 transition-opacity duration-500;
   }
 
-  .section:hover::before {
+  /* .section:hover::before {
     @apply opacity-100;
-  }
+  } */
 
   .section-title {
     @apply text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center dark:text-white relative;
@@ -119,47 +207,70 @@
   }
 
   .animate-float {
-    animation: float 6s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite;
   }
 
   .animate-pulse-slow {
-    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: pulse-slow 4s ease-in-out infinite;
   }
 
   .animate-bounce-slow {
-    animation: bounce 3s infinite;
+    animation: bounce-slow 2s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
   }
 }
 
 @keyframes float {
-  0% {
-    transform: translateY(0px);
+  0%, 100% {
+    transform: translateY(0);
   }
   50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0px);
+    transform: translateY(-10px);
   }
 }
 
-@keyframes pulse {
+@keyframes pulse-slow {
   0%, 100% {
     opacity: 1;
   }
   50% {
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 
-@keyframes bounce {
+@keyframes bounce-slow {
   0%, 100% {
-    transform: translateY(-5%);
-    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    transform: translateY(0);
   }
   50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
     transform: translateY(0);
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
@@ -194,4 +305,40 @@
     opacity: 0;
     transform: translateY(20px);
   }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.gray.100');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.primary.500');
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.primary.600');
+}
+
+/* Dark Mode Scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: theme('colors.gray.800');
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: theme('colors.primary.600');
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.primary.500');
 }

@@ -1,8 +1,14 @@
 import React, { useEffect } from 'react';
 import SectionTitle from '../components/ui/SectionTitle';
-import Card, { CardBody } from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import { CheckCircle, Users, Award, Briefcase, Monitor, Code, Package, DollarSign, Calendar, Clock } from 'lucide-react';
+import Card from '../components/ui/Card';
+
+const CustomCard: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform ease hover:scale-105">
+    {children}
+  </div>
+);
 
 const ServicesPage: React.FC = () => {
   useEffect(() => {
@@ -137,9 +143,9 @@ const ServicesPage: React.FC = () => {
           <div className="space-y-12">
             {courses.map((course) => (
               <div key={course.id} className="animate-on-scroll">
-                <Card className="overflow-hidden">
+                <CustomCard>
                   <div className={`${course.color} h-2 w-full`}></div>
-                  <CardBody className="p-8">
+                  <div className="p-8">
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                       <div className="lg:col-span-2">
                         <h3 className="text-2xl font-bold mb-3 dark:text-white">{course.title}</h3>
@@ -173,14 +179,13 @@ const ServicesPage: React.FC = () => {
                             <span className="dark:text-white"><strong>Fee:</strong> {course.price}</span>
                           </div>
                         </div>
-                        
-                        <Button to="/contact" variant="primary" fullWidth>
+                        <button onClick={() => window.location.href = '/contact'} className="bg-primary-500 text-white px-4 py-2 rounded-md hover:bg-primary-600 transition-colors duration-300">
                           Enroll Now
-                        </Button>
+                        </button>
                       </div>
                     </div>
-                  </CardBody>
-                </Card>
+                  </div>
+                </CustomCard>
               </div>
             ))}
           </div>
@@ -198,14 +203,14 @@ const ServicesPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {extraServices.map((service, index) => (
               <Card key={index} className="h-full animate-on-scroll">
-                <CardBody className="p-6">
+                <div className="p-6">
                   <div className="mb-4 p-3 bg-gray-100 rounded-full inline-block">
                     {service.icon}
                   </div>
                   <h3 className="text-xl font-semibold mb-3 dark:text-white">{service.title}</h3>
                   <p className="text-gray-600 mb-4 dark:text-white">{service.description}</p>
                   <p className="text-primary-600 font-medium dark:text-white">{service.price}</p>
-                </CardBody>
+                </div>
               </Card>
             ))}
           </div>
@@ -286,15 +291,15 @@ const ServicesPage: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {differences.map((item, index) => (
-              <Card key={index} className="h-full animate-on-scroll">
-                <CardBody className="flex flex-col items-center text-center p-6">
+              <CustomCard key={index} className="h-full animate-on-scroll">
+                <div className="flex flex-col items-center text-center p-6">
                   <div className="mb-4 p-3 bg-primary-50 rounded-full">
                     {item.icon}
                   </div>
                   <h3 className="text-xl font-semibold mb-3 dark:text-white">{item.title}</h3>
                   <p className="text-gray-600 dark:text-white">{item.description}</p>
-                </CardBody>
-              </Card>
+                </div>
+              </CustomCard>
             ))}
           </div>
         </div>

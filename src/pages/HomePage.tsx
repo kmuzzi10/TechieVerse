@@ -127,10 +127,20 @@ const HomePage: React.FC = () => {
               Join our comprehensive training programs and master the skills needed for a successful career in technology.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
-              <Button variant="primary" size="lg" className="animate-float hover:scale-105 transition-transform duration-300">
+              <Button 
+                variant="primary" 
+                size="lg" 
+                className="animate-float hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
+                to="/contact"
+              >
                 Get Started
               </Button>
-              <Button variant="outline" size="lg" className="hover:scale-105 transition-transform duration-300">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="hover:scale-105 transition-transform duration-300 border-2"
+                to="/services"
+              >
                 Learn More
               </Button>
             </div>
@@ -149,9 +159,12 @@ const HomePage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="h-full animate-on-scroll">
+              <Card 
+                key={index} 
+                className="h-full animate-on-scroll hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
+              >
                 <CardBody className="flex flex-col items-center text-center p-6">
-                  <div className="mb-4 p-3 bg-primary-50 rounded-full">
+                  <div className="mb-4 p-3 bg-primary-50 dark:bg-primary-900/20 rounded-full transform hover:rotate-12 transition-transform duration-300">
                     {feature.icon}
                   </div>
                   <h3 className="text-xl font-semibold mb-3 dark:text-white">
@@ -182,6 +195,7 @@ const HomePage: React.FC = () => {
               price="PKR 5000/month"
               image="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               color="bg-primary-500"
+              className="hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
             />
 
             <CourseCard
@@ -192,6 +206,7 @@ const HomePage: React.FC = () => {
               price="PKR 5000/month"
               image="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               color="bg-secondary-500"
+              className="hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
             />
 
             <CourseCard
@@ -202,11 +217,16 @@ const HomePage: React.FC = () => {
               price="PKR 8000/month"
               image="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               color="bg-accent-500"
+              className="hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
             />
           </div>
 
           <div className="text-center mt-12">
-            <Button to="/services" variant="primary" className="mx-auto">
+            <Button 
+              to="/services" 
+              variant="primary" 
+              className="mx-auto hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
+            >
               View All Courses <ArrowRight size={16} className="ml-2" />
             </Button>
           </div>
@@ -225,8 +245,9 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
-        <div className="container-custom text-center">
+      <section className="py-16 bg-gradient-to-r from-primary-600 to-secondary-600 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent animate-pulse-slow"></div>
+        <div className="container-custom text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-on-scroll dark:text-white">
             Ready to Start Your Tech Journey?
           </h2>
@@ -238,7 +259,7 @@ const HomePage: React.FC = () => {
             to="/contact"
             variant="accent"
             size="lg"
-            className="animate-on-scroll"
+            className="animate-on-scroll hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
           >
             Enroll Now
           </Button>

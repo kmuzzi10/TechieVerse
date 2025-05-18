@@ -49,6 +49,7 @@ const ContactPage: React.FC = () => {
       [name]: value,
     }));
 
+    // Clear error for this field if it exists
     if (errors[name]) {
       setErrors((prev) => {
         const newErrors = { ...prev };
@@ -73,8 +74,8 @@ const ContactPage: React.FC = () => {
   
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone number is required";
-    } else if (!/^\d{11}$/.test(formData.phone)) {  // Ensuring exactly 11 digits
-      newErrors.phone = "Phone number must be 11 digits";
+    } else if (!/^\+?[\d\s-]{10,}$/.test(formData.phone)) {  // More flexible phone validation
+      newErrors.phone = "Please enter a valid phone number";
     }
   
     if (!formData.course) {
@@ -111,8 +112,8 @@ const ContactPage: React.FC = () => {
                   TechieVerse Team
                 `;
         await emailjs.send(
-          serviceID, // TODO: Replace with your EmailJS service ID
-          templateID, // TODO: Replace with your EmailJS template ID
+          serviceID,
+          templateID,
           {
             to_email: emailID,
             from_name: formData.name,
@@ -124,9 +125,7 @@ const ContactPage: React.FC = () => {
         );
 
         setSubmitSuccess(true);
-        toast.success(
-          "Thank you for contacting us! We've received your message."
-        );
+        toast.success("Thank you for contacting us! We've received your message.");
         setFormData({
           name: "",
           email: "",
@@ -140,9 +139,7 @@ const ContactPage: React.FC = () => {
         }, 5000);
       } catch (error) {
         console.error("Failed to send email:", error);
-        toast.success(
-          "Thank you for contacting us! We've received your message."
-        );
+        toast.error("Sorry, there was an error sending your message. Please try again later.");
       } finally {
         setIsSubmitting(false);
       }
@@ -207,7 +204,7 @@ const ContactPage: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-r from-primary-700 to-secondary-700 text-white">
+      <section className="pt-32 pb-20 bg-gradient-to-r from-primary-700 to-secondary-700 text-white dark:from-primary-800 dark:to-secondary-800">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-on-scroll">
@@ -227,26 +224,26 @@ const ContactPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="animate-on-scroll">
               <h2 className="text-3xl font-bold mb-6">Get In Touch</h2>
-              <p className="text-gray-600 mb-8">
+              <p className="text-gray-600 dark:text-gray-300 mb-8">
                 Fill out the form below and our team will get back to you within
                 24 hours.
               </p>
 
-              <Card className="animate-on-scroll">
-                <CardBody className="p-8">
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 animate-on-scroll relative z-10">
+                <div className="p-8">
                   {submitSuccess ? (
-                    <div className="bg-green-50 border border-green-200 text-green-700 px-6 py-4 rounded-md mb-6">
+                    <div className="bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700 text-green-700 dark:text-green-300 px-6 py-4 rounded-md mb-6">
                       Thank you for contacting us! We've sent you a confirmation
                       email. Our team will get back to you within 24 hours.
                     </div>
                   ) : null}
 
-                  <form onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit} className="relative z-20">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                      <div>
+                      <div className="relative">
                         <label
                           htmlFor="name"
-                          className="block text-gray-700 font-medium mb-2"
+                          className="block text-gray-700 dark:text-gray-300 font-medium mb-2"
                         >
                           Full Name *
                         </label>
@@ -256,8 +253,8 @@ const ContactPage: React.FC = () => {
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-                            errors.name ? "border-red-500" : "border-gray-300"
+                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 relative z-30 ${
+                            errors.name ? "border-red-500" : "border-gray-300 dark:border-gray-600"
                           }`}
                           placeholder="Your name"
                           required
@@ -269,10 +266,10 @@ const ContactPage: React.FC = () => {
                         )}
                       </div>
 
-                      <div>
+                      <div className="relative">
                         <label
                           htmlFor="email"
-                          className="block text-gray-700 font-medium mb-2"
+                          className="block text-gray-700 dark:text-gray-300 font-medium mb-2"
                         >
                           Email Address *
                         </label>
@@ -282,8 +279,8 @@ const ContactPage: React.FC = () => {
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
-                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-                            errors.email ? "border-red-500" : "border-gray-300"
+                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 relative z-30 ${
+                            errors.email ? "border-red-500" : "border-gray-300 dark:border-gray-600"
                           }`}
                           placeholder="your.email@example.com"
                           required
@@ -297,10 +294,10 @@ const ContactPage: React.FC = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                      <div>
+                      <div className="relative">
                         <label
                           htmlFor="phone"
-                          className="block text-gray-700 font-medium mb-2"
+                          className="block text-gray-700 dark:text-gray-300 font-medium mb-2"
                         >
                           Phone Number *
                         </label>
@@ -310,8 +307,8 @@ const ContactPage: React.FC = () => {
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-                            errors.phone ? "border-red-500" : "border-gray-300"
+                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 relative z-30 ${
+                            errors.phone ? "border-red-500" : "border-gray-300 dark:border-gray-600"
                           }`}
                           placeholder="03 XX XXXXXXX"
                           required
@@ -323,10 +320,10 @@ const ContactPage: React.FC = () => {
                         )}
                       </div>
 
-                      <div>
+                      <div className="relative">
                         <label
                           htmlFor="course"
-                          className="block text-gray-700 font-medium mb-2"
+                          className="block text-gray-700 dark:text-gray-300 font-medium mb-2"
                         >
                           Interested Course *
                         </label>
@@ -335,8 +332,8 @@ const ContactPage: React.FC = () => {
                           name="course"
                           value={formData.course}
                           onChange={handleChange}
-                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-                            errors.course ? "border-red-500" : "border-gray-300"
+                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 relative z-30 ${
+                            errors.course ? "border-red-500" : "border-gray-300 dark:border-gray-600"
                           }`}
                           required
                         >
@@ -356,10 +353,10 @@ const ContactPage: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="mb-6">
+                    <div className="mb-6 relative">
                       <label
                         htmlFor="message"
-                        className="block text-gray-700 font-medium mb-2"
+                        className="block text-gray-700 dark:text-gray-300 font-medium mb-2"
                       >
                         Message (Optional)
                       </label>
@@ -369,7 +366,7 @@ const ContactPage: React.FC = () => {
                         value={formData.message}
                         onChange={handleChange}
                         rows={5}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 relative z-30"
                         placeholder="Tell us more about your learning goals..."
                       ></textarea>
                     </div>
@@ -377,19 +374,26 @@ const ContactPage: React.FC = () => {
                     <Button
                       type="submit"
                       variant="primary"
-                      className="w-full md:w-auto"
+                      className="w-full md:w-auto relative z-30"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? "Submitting..." : "Send Message"}
+                      {isSubmitting ? (
+                        <div className="flex items-center space-x-2">
+                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          <span>Submitting...</span>
+                        </div>
+                      ) : (
+                        "Send Message"
+                      )}
                     </Button>
                   </form>
-                </CardBody>
-              </Card>
+                </div>
+              </div>
             </div>
 
             <div className="animate-on-scroll">
               <h2 className="text-3xl font-bold mb-6">Contact Information</h2>
-              <p className="text-gray-600 mb-8">
+              <p className="text-gray-600 dark:text-gray-300 mb-8">
                 You can reach us directly through any of the following contact
                 methods.
               </p>
@@ -398,12 +402,12 @@ const ContactPage: React.FC = () => {
                 {contactInfo.map((info, index) => (
                   <Card key={index}>
                     <CardBody className="p-6 flex items-center space-x-4">
-                      <div className="bg-primary-50 p-3 rounded-full">
+                      <div className="bg-primary-50 dark:bg-primary-900 p-3 rounded-full">
                         {info.icon}
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg">{info.title}</h3>
-                        <p className="text-gray-600">{info.content}</p>
+                        <p className="text-gray-600 dark:text-gray-300">{info.content}</p>
                       </div>
                     </CardBody>
                   </Card>
@@ -415,17 +419,17 @@ const ContactPage: React.FC = () => {
                   <h3 className="text-xl font-semibold mb-4">Working Hours</h3>
                   <div className="space-y-2">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Monday - Friday:</span>
+                      <span className="text-gray-600 dark:text-gray-300">Monday - Friday:</span>
                       <span className="font-medium">9:00 AM - 6:00 PM</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Saturday:</span>
+                      <span className="text-gray-600 dark:text-gray-300">Saturday:</span>
                       <span className="font-medium">
                         Only Availaible For Consultations
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Sunday:</span>
+                      <span className="text-gray-600 dark:text-gray-300">Sunday:</span>
                       <span className="font-medium">Closed</span>
                     </div>
                   </div>
@@ -453,7 +457,7 @@ const ContactPage: React.FC = () => {
                       {step.icon}
                     </div>
                     <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
-                    <p className="text-gray-600">{step.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
 
                     {index < enrollmentSteps.length - 1 && (
                       <div className="hidden md:block absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2">
@@ -474,7 +478,7 @@ const ContactPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="animate-on-scroll">
               <h2 className="text-3xl font-bold mb-6">Google Meet Classes</h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 dark:text-gray-300 mb-6">
                 All our classes are conducted live through Google Meet. Once
                 enrolled, you'll receive a class link before each session.
               </p>
@@ -484,7 +488,7 @@ const ContactPage: React.FC = () => {
                   <div className="bg-green-100 p-1 rounded-full mt-1">
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                   </div>
-                  <p className="text-gray-700">
+                  <p className="text-gray-700 dark:text-gray-300">
                     Classes are interactive with audio and video capabilities
                   </p>
                 </div>
@@ -492,7 +496,7 @@ const ContactPage: React.FC = () => {
                   <div className="bg-green-100 p-1 rounded-full mt-1">
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                   </div>
-                  <p className="text-gray-700">
+                  <p className="text-gray-700 dark:text-gray-300">
                     Screen sharing for demonstrations and code reviews
                   </p>
                 </div>
@@ -500,7 +504,7 @@ const ContactPage: React.FC = () => {
                   <div className="bg-green-100 p-1 rounded-full mt-1">
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                   </div>
-                  <p className="text-gray-700">
+                  <p className="text-gray-700 dark:text-gray-300">
                     Recording available for enrolled students who miss a session
                   </p>
                 </div>
@@ -508,7 +512,7 @@ const ContactPage: React.FC = () => {
                   <div className="bg-green-100 p-1 rounded-full mt-1">
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                   </div>
-                  <p className="text-gray-700">
+                  <p className="text-gray-700 dark:text-gray-300">
                     Chat functionality for questions during class
                   </p>
                 </div>
@@ -531,7 +535,7 @@ const ContactPage: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-secondary-600 to-primary-600 text-white">
+      <section className="py-16 bg-gradient-to-r from-secondary-600 to-primary-600 dark:from-secondary-700 dark:to-primary-700 text-white">
         <div className="container-custom text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-on-scroll">
             Ready to Begin Your Tech Journey?
