@@ -50,14 +50,11 @@ const Button: React.FC<ButtonProps> = ({
   
   if (to) {
     return (
-      <motion.a
-        href={to}
-        whileHover={{ scale: 1.06 }}
-        whileTap={{ scale: 0.96 }}
-        className={classes}
-      >
-        {children}
-      </motion.a>
+      <motion.div whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.96 }} style={{ display: 'inline-block' }}>
+        <Link to={to} className={classes} tabIndex={disabled ? -1 : 0} aria-disabled={disabled} onClick={disabled ? (e) => e.preventDefault() : undefined}>
+          {children}
+        </Link>
+      </motion.div>
     );
   }
   
