@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { toast, ToastContainer } from "react-toastify"; // Add this import
 import "react-toastify/dist/ReactToastify.css"; // Add this import for styling
+import { motion } from "framer-motion";
 
 const serviceID = import.meta.env.VITE_SERVICE_ID;
 const templateID = import.meta.env.VITE_TEMPLATE_ID;
@@ -204,46 +205,81 @@ const ContactPage: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-r from-primary-700 to-secondary-700 text-white dark:from-primary-800 dark:to-secondary-800">
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="pt-32 pb-20 bg-gradient-to-r from-primary-700 to-secondary-700 text-white dark:from-primary-800 dark:to-secondary-800"
+      >
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-on-scroll">
+            <motion.h1 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-5xl font-bold mb-6"
+            >
               Contact Us
-            </h1>
-            <p className="text-xl text-gray-100 mb-8 animate-on-scroll">
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-xl text-gray-100 mb-8"
+            >
               Have questions about our courses or ready to enroll? Get in touch
               with our team.
-            </p>
+            </motion.p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Contact Form Section */}
-      <section className="section bg-white dark:bg-gray-900">
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="section bg-white dark:bg-gray-900"
+      >
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="animate-on-scroll">
-              <h2 className="text-3xl font-bold mb-6">Get In Touch</h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Get In Touch</h2>
+              <p className="text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 text-sm sm:text-base">
                 Fill out the form below and our team will get back to you within
                 24 hours.
               </p>
 
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 animate-on-scroll relative z-10">
-                <div className="p-8">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6 lg:p-8 relative z-10"
+              >
+                <div className="p-4 sm:p-6 lg:p-8">
                   {submitSuccess ? (
-                    <div className="bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700 text-green-700 dark:text-green-300 px-6 py-4 rounded-md mb-6">
+                    <div className="bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700 text-green-700 dark:text-green-300 px-4 sm:px-6 py-4 rounded-md mb-6">
                       Thank you for contacting us! We've sent you a confirmation
                       email. Our team will get back to you within 24 hours.
                     </div>
                   ) : null}
 
                   <form onSubmit={handleSubmit} className="relative z-20">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                      <div className="relative">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+                      <div className="relative sm:col-span-2 sm:col-start-1">
                         <label
                           htmlFor="name"
-                          className="block text-gray-700 dark:text-gray-300 font-medium mb-2"
+                          className="block text-gray-700 dark:text-gray-300 font-medium mb-2 text-sm sm:text-base"
                         >
                           Full Name *
                         </label>
@@ -253,11 +289,12 @@ const ContactPage: React.FC = () => {
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 relative z-30 ${
+                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 relative z-30 text-base ${
                             errors.name ? "border-red-500" : "border-gray-300 dark:border-gray-600"
                           }`}
                           placeholder="Your name"
                           required
+                          style={{ minHeight: '48px' }}
                         />
                         {errors.name && (
                           <p className="text-red-500 text-sm mt-1">
@@ -269,7 +306,7 @@ const ContactPage: React.FC = () => {
                       <div className="relative">
                         <label
                           htmlFor="email"
-                          className="block text-gray-700 dark:text-gray-300 font-medium mb-2"
+                          className="block text-gray-700 dark:text-gray-300 font-medium mb-2 text-sm sm:text-base"
                         >
                           Email Address *
                         </label>
@@ -279,11 +316,12 @@ const ContactPage: React.FC = () => {
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
-                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 relative z-30 ${
+                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 relative z-30 text-base ${
                             errors.email ? "border-red-500" : "border-gray-300 dark:border-gray-600"
                           }`}
                           placeholder="your.email@example.com"
                           required
+                          style={{ minHeight: '48px' }}
                         />
                         {errors.email && (
                           <p className="text-red-500 text-sm mt-1">
@@ -293,11 +331,11 @@ const ContactPage: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
                       <div className="relative">
                         <label
                           htmlFor="phone"
-                          className="block text-gray-700 dark:text-gray-300 font-medium mb-2"
+                          className="block text-gray-700 dark:text-gray-300 font-medium mb-2 text-sm sm:text-base"
                         >
                           Phone Number *
                         </label>
@@ -307,11 +345,12 @@ const ContactPage: React.FC = () => {
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 relative z-30 ${
+                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 relative z-30 text-base ${
                             errors.phone ? "border-red-500" : "border-gray-300 dark:border-gray-600"
                           }`}
                           placeholder="03 XX XXXXXXX"
                           required
+                          style={{ minHeight: '48px' }}
                         />
                         {errors.phone && (
                           <p className="text-red-500 text-sm mt-1">
@@ -323,7 +362,7 @@ const ContactPage: React.FC = () => {
                       <div className="relative">
                         <label
                           htmlFor="course"
-                          className="block text-gray-700 dark:text-gray-300 font-medium mb-2"
+                          className="block text-gray-700 dark:text-gray-300 font-medium mb-2 text-sm sm:text-base"
                         >
                           Interested Course *
                         </label>
@@ -332,10 +371,11 @@ const ContactPage: React.FC = () => {
                           name="course"
                           value={formData.course}
                           onChange={handleChange}
-                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 relative z-30 ${
+                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 relative z-30 text-base ${
                             errors.course ? "border-red-500" : "border-gray-300 dark:border-gray-600"
                           }`}
                           required
+                          style={{ minHeight: '48px' }}
                         >
                           <option value="">Select a course</option>
                           <option value="mobile">AppVerse</option>
@@ -356,7 +396,7 @@ const ContactPage: React.FC = () => {
                     <div className="mb-6 relative">
                       <label
                         htmlFor="message"
-                        className="block text-gray-700 dark:text-gray-300 font-medium mb-2"
+                        className="block text-gray-700 dark:text-gray-300 font-medium mb-2 text-sm sm:text-base"
                       >
                         Message (Optional)
                       </label>
@@ -366,15 +406,16 @@ const ContactPage: React.FC = () => {
                         value={formData.message}
                         onChange={handleChange}
                         rows={5}
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 relative z-30"
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 relative z-30 text-base resize-none"
                         placeholder="Tell us more about your learning goals..."
+                        style={{ minHeight: '120px' }}
                       ></textarea>
                     </div>
 
                     <Button
                       type="submit"
                       variant="primary"
-                      className="w-full md:w-auto relative z-30"
+                      className="w-full sm:w-auto relative z-30 min-h-[48px] text-base"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
@@ -388,10 +429,15 @@ const ContactPage: React.FC = () => {
                     </Button>
                   </form>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            <div className="animate-on-scroll">
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               <h2 className="text-3xl font-bold mb-6">Contact Information</h2>
               <p className="text-gray-600 dark:text-gray-300 mb-8">
                 You can reach us directly through any of the following contact
@@ -400,58 +446,92 @@ const ContactPage: React.FC = () => {
 
               <div className="grid grid-cols-1 gap-6 mb-8">
                 {contactInfo.map((info, index) => (
-                  <Card key={index}>
-                    <CardBody className="p-6 flex items-center space-x-4">
-                      <div className="bg-primary-50 dark:bg-primary-900 p-3 rounded-full">
-                        {info.icon}
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-lg">{info.title}</h3>
-                        <p className="text-gray-600 dark:text-gray-300">{info.content}</p>
-                      </div>
-                    </CardBody>
-                  </Card>
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                  >
+                    <Card className="hover:scale-105 transition-transform duration-300">
+                      <CardBody className="p-6 flex items-center space-x-4">
+                        <div className="bg-primary-50 dark:bg-primary-900 p-3 rounded-full">
+                          {info.icon}
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-lg">{info.title}</h3>
+                          <p className="text-gray-600 dark:text-gray-300">{info.content}</p>
+                        </div>
+                      </CardBody>
+                    </Card>
+                  </motion.div>
                 ))}
               </div>
 
-              <Card className="mt-8">
-                <CardBody className="p-6">
-                  <h3 className="text-xl font-semibold mb-4">Working Hours</h3>
-                  <div className="space-y-2">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">Monday - Friday:</span>
-                      <span className="font-medium">9:00 AM - 6:00 PM</span>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <Card className="mt-8 hover:scale-105 transition-transform duration-300">
+                  <CardBody className="p-6">
+                    <h3 className="text-xl font-semibold mb-4">Working Hours</h3>
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-gray-600 dark:text-gray-300">Monday - Friday:</span>
+                        <span className="font-medium">9:00 AM - 6:00 PM</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600 dark:text-gray-300">Saturday:</span>
+                        <span className="font-medium">
+                          Only Availaible For Consultations
+                        </span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600 dark:text-gray-300">Sunday:</span>
+                        <span className="font-medium">Closed</span>
+                      </div>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">Saturday:</span>
-                      <span className="font-medium">
-                        Only Availaible For Consultations
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">Sunday:</span>
-                      <span className="font-medium">Closed</span>
-                    </div>
-                  </div>
-                </CardBody>
-              </Card>
-            </div>
+                  </CardBody>
+                </Card>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Enrollment Process Section */}
-      <section className="section bg-gray-50 dark:bg-gray-800">
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="section bg-gray-50 dark:bg-gray-800"
+      >
         <div className="container-custom">
-          <SectionTitle
-            title="Enrollment Process"
-            subtitle="Follow these simple steps to enroll in our training programs."
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <SectionTitle
+              title="Enrollment Process"
+              subtitle="Follow these simple steps to enroll in our training programs."
+            />
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             {enrollmentSteps.map((step, index) => (
-              <div key={index} className="animate-on-scroll">
-                <Card className="h-full">
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Card className="h-full hover:scale-105 transition-transform duration-300">
                   <CardBody className="p-6 flex flex-col items-center text-center">
                     <div className={`${step.color} p-3 rounded-full mb-4`}>
                       {step.icon}
@@ -466,17 +546,28 @@ const ContactPage: React.FC = () => {
                     )}
                   </CardBody>
                 </Card>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Google Meet Section */}
-      <section className="section bg-white dark:bg-gray-900">
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="section bg-white dark:bg-gray-900"
+      >
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="animate-on-scroll">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <h2 className="text-3xl font-bold mb-6">Google Meet Classes</h2>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
                 All our classes are conducted live through Google Meet. Once
@@ -516,52 +607,83 @@ const ContactPage: React.FC = () => {
                     Chat functionality for questions during class
                   </p>
                 </div>
+
               </div>
 
               <Button to="/services" variant="primary">
                 View Course Details
               </Button>
-            </div>
+            </motion.div>
 
-            <div className="animate-on-scroll">
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               <img
                 src="https://images.pexels.com/photos/4145153/pexels-photo-4145153.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt="Online class via Google Meet"
                 className="rounded-lg shadow-lg"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-secondary-600 to-primary-600 dark:from-secondary-700 dark:to-primary-700 text-white">
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="py-16 bg-gradient-to-r from-secondary-600 to-primary-600 dark:from-secondary-700 dark:to-primary-700 text-white"
+      >
         <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-on-scroll">
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold mb-6"
+          >
             Ready to Begin Your Tech Journey?
-          </h2>
-          <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto animate-on-scroll">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-lg md:text-xl mb-8 max-w-3xl mx-auto"
+          >
             Contact us today to enroll in our upcoming batch and take the first
             step towards a successful tech career.
-          </p>
-          <Button
-            variant="accent"
-            size="lg"
-            onClick={() => {
-              const contactForm = document.querySelector("form");
-              if (contactForm) {
-                contactForm.scrollIntoView({ behavior: "smooth" });
-              }
-            }}
-            className="animate-on-scroll"
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Enroll Now
-          </Button>
+            <Button
+              variant="accent"
+              size="lg"
+              onClick={() => {
+                const contactForm = document.querySelector("form");
+                if (contactForm) {
+                  contactForm.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
+              Enroll Now
+            </Button>
+          </motion.div>
         </div>
         <ToastContainer />
-      </section>
+      </motion.section>
     </>
   );
 };
 
 export default ContactPage;
+

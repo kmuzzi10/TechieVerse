@@ -7,6 +7,7 @@ import imgage1 from "../assets/group-young-business-people-working-office.jpg";
 import avatar1 from "../assets/avatar1.png";
 import avatar2 from "../assets/avatar2.png";
 import avatar3 from "../assets/avatar3.png";
+import { motion } from "framer-motion";
 
 const AboutPage: React.FC = () => {
   useEffect(() => {
@@ -103,25 +104,54 @@ const AboutPage: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-r from-primary-700 to-secondary-700 text-white">
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="pt-32 pb-20 bg-gradient-to-r from-primary-700 to-secondary-700 text-white"
+      >
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-on-scroll">
+            <motion.h1 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-5xl font-bold mb-6"
+            >
               About TechieVerse Training Centre
-            </h1>
-            <p className="text-xl text-gray-100 mb-8 animate-on-scroll">
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-xl text-gray-100 mb-8"
+            >
               Building the next generation of tech professionals through quality
               education and real-world experience.
-            </p>
+            </motion.p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Mission & Vision Section */}
-      <section className="section bg-white dark:bg-gray-900">
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="section bg-white dark:bg-gray-900"
+      >
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="animate-on-scroll">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <h2 className="text-3xl font-bold mb-6 dark:text-white">Our Mission</h2>
               <p className="text-gray-700 mb-6 dark:text-gray-300">
                 At TechieVerse Training Centre, our mission is to bridge the gap
@@ -137,86 +167,146 @@ const AboutPage: React.FC = () => {
               <Button to="/services" variant="primary">
                 Explore Our Courses
               </Button>
-            </div>
-            <div className="animate-on-scroll">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               <img
                 src={imgage1}
                 alt="Tech education mission"
                 className="rounded-lg shadow-lg"
                 loading="lazy"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Our Approach Section */}
-      <section className="section bg-gray-50 dark:bg-gray-800">
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="section bg-gray-50 dark:bg-gray-800"
+      >
         <div className="container-custom">
-          <SectionTitle
-            title="Our Unique Learning Approach"
-            subtitle="We combine technology, personal guidance, and real-world opportunities to create a comprehensive learning experience."
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <SectionTitle
+              title="Our Unique Learning Approach"
+              subtitle="We combine technology, personal guidance, and real-world opportunities to create a comprehensive learning experience."
+            />
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {approaches.map((approach, index) => (
-              <Card key={index} className="h-full animate-on-scroll">
-                <CardBody className="flex flex-col items-center text-center p-6">
-                  <div className="mb-4 p-3 bg-gray-100 rounded-full">
-                    {approach.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3 dark:text-white">
-                    {approach.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">{approach.description}</p>
-                </CardBody>
-              </Card>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Card className="h-full hover:scale-105 transition-transform duration-300">
+                  <CardBody className="flex flex-col items-center text-center p-6">
+                    <div className="mb-4 p-3 bg-gray-100 rounded-full">
+                      {approach.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold mb-3 dark:text-white">
+                      {approach.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300">{approach.description}</p>
+                  </CardBody>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Instructors Section */}
-      <section className="section bg-white dark:bg-gray-900">
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="section bg-white dark:bg-gray-900"
+      >
         <div className="container-custom">
-          <SectionTitle
-            title="Meet Our Instructors"
-            subtitle="Learn from experienced professionals who are passionate about teaching and mentoring."
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <SectionTitle
+              title="Meet Our Instructors"
+              subtitle="Learn from experienced professionals who are passionate about teaching and mentoring."
+            />
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {instructors.map((instructor, index) => (
-              <Card key={index} className="h-full animate-on-scroll">
-                <div className="aspect-w-3 aspect-h-2">
-                  <img
-                    src={instructor.image}
-                    alt={instructor.name}
-                    className="w-48 h-48 object-cover rounded-full mx-auto mb-4"
-                    loading="lazy"
-                  />
-                </div>
-                <CardBody className="p-6">
-                  <h3 className="text-xl font-semibold mb-1 dark:text-white">
-                    {instructor.name}
-                  </h3>
-                  <p className="text-primary-500 font-medium mb-4 dark:text-primary-400">
-                    {instructor.role}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-300">{instructor.bio}</p>
-                </CardBody>
-              </Card>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Card className="h-full hover:scale-105 transition-transform duration-300">
+                  <div className="aspect-w-3 aspect-h-2">
+                    <img
+                      src={instructor.image}
+                      alt={instructor.name}
+                      className="w-48 h-48 object-cover rounded-full mx-auto mb-4"
+                      loading="lazy"
+                    />
+                  </div>
+                  <CardBody className="p-6">
+                    <h3 className="text-xl font-semibold mb-1 dark:text-white">
+                      {instructor.name}
+                    </h3>
+                    <p className="text-primary-500 font-medium mb-4 dark:text-primary-400">
+                      {instructor.role}
+                    </p>
+                    <p className="text-gray-600 dark:text-gray-300">{instructor.bio}</p>
+                  </CardBody>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Student Journey Section */}
-      <section className="section bg-gray-50 dark:bg-gray-800">
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="section bg-gray-50 dark:bg-gray-800"
+      >
         <div className="container-custom">
-          <SectionTitle
-            title="Student Journey"
-            subtitle="From enrollment to industry-ready professional, here's how we transform your tech career."
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <SectionTitle
+              title="Student Journey"
+              subtitle="From enrollment to industry-ready professional, here's how we transform your tech career."
+            />
+          </motion.div>
 
           <div className="max-w-4xl mx-auto relative">
             {/* Timeline Line */}
@@ -225,7 +315,14 @@ const AboutPage: React.FC = () => {
             {/* Timeline Steps */}
             <div className="space-y-12">
               {timelineSteps.map((step, index) => (
-                <div key={index} className="relative animate-on-scroll">
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="relative"
+                >
                   <div className="flex flex-col md:flex-row items-start gap-6">
                     <div className="hidden md:flex items-center justify-center">
                       <div
@@ -235,7 +332,7 @@ const AboutPage: React.FC = () => {
                         )} shadow-md z-10`}
                       ></div>
                     </div>
-                    <Card className="md:ml-6 w-full">
+                    <Card className="md:ml-6 w-full hover:scale-105 transition-transform duration-300">
                       <CardBody className="p-6">
                         <h3
                           className={`text-xl font-semibold mb-3 ${step.color.replace(
@@ -249,29 +346,54 @@ const AboutPage: React.FC = () => {
                       </CardBody>
                     </Card>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-secondary-600 to-primary-600 text-white">
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="py-16 bg-gradient-to-r from-secondary-600 to-primary-600 text-white"
+      >
         <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-on-scroll">
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold mb-6"
+          >
             Join Our Tech Community
-          </h2>
-          <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto animate-on-scroll">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-lg md:text-xl mb-8 max-w-3xl mx-auto"
+          >
             Ready to take the next step in your tech career? Enroll in one of
             our courses today and start learning from experts who will help you
             succeed in the tech industry.
-          </p>
-          <Button to="/contact" variant="primary">
-            Get in Touch
-          </Button>
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Button to="/contact" variant="primary">
+              Get in Touch
+            </Button>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 };

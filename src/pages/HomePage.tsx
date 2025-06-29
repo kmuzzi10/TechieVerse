@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
-import Button from "../components/ui/Button";
-import SectionTitle from "../components/ui/SectionTitle";
-import TestimonialSlider from "../components/ui/TestimonialSlider";
 import HeroSection from "../components/HomePage/HeroSection";
 import FeaturesSection from "../components/HomePage/FeaturesSection";
+import StatsSection from "../components/HomePage/StatsSection";
 import CoursesSection from "../components/HomePage/CoursesSection";
 import TestimonialsSection from "../components/HomePage/TestimonialsSection";
 import CTASection from "../components/HomePage/CTASection";
@@ -19,6 +17,7 @@ const HomePage: React.FC = () => {
     <>
       <HeroSection />
       <FeaturesSection features={features} />
+      <StatsSection />
       <CoursesSection courses={courses} />
       <TestimonialsSection testimonials={testimonials} />
       <CTASection />

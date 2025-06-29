@@ -1,6 +1,12 @@
-import { BookOpen, Users, Award, Briefcase, UserCheck, Laptop2 } from "lucide-react";
+// Icons are referenced as strings in the features array, so no imports needed
 
-export const features = [
+interface Feature {
+  icon: "BookOpen" | "Users" | "Award" | "Briefcase" | "UserCheck" | "Laptop2";
+  title: string;
+  description: string;
+}
+
+export const features: Feature[] = [
   {
     icon: "BookOpen",
     title: "Expert Instructors",

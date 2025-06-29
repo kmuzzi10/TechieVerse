@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "../../styling/TestimonialSwiper.css";
 import { useRef, useEffect, useState } from "react";
+import React from "react";
 
 export interface Testimonial {
   name: string;
@@ -110,9 +111,9 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
         modules={[EffectCoverflow, Pagination, Navigation]}
         className="testimonial-swiper"
         onInit={(swiper) => {
-          // @ts-ignore
+          // @ts-expect-error - Swiper navigation elements need to be set manually for proper initialization
           swiper.params.navigation.prevEl = prevRef.current;
-          // @ts-ignore
+          // @ts-expect-error - Swiper navigation elements need to be set manually for proper initialization
           swiper.params.navigation.nextEl = nextRef.current;
           swiper.navigation.init();
           swiper.navigation.update();
@@ -170,4 +171,21 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
   );
 };
 
-export default TestimonialSlider;
+export const TestimonialSliderSkeleton: React.FC<{ count?: number }> = ({ count = 3 }) => (
+  <div className="testimonial-slider w-full flex justify-center gap-6">
+    {Array.from({ length: count }).map((_, i) => (
+      <div key={i} className="testimonial-slide animate-pulse">
+        <div className="testimonial-card flex flex-col items-center p-6">
+          <div className="testimonial-avatar mb-4 bg-gray-200 dark:bg-gray-700 w-14 h-14 rounded-full" />
+          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-2/3 mb-2" />
+          <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/2 mb-4" />
+          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full mb-2" />
+          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6 mb-2" />
+          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-4/6" />
+        </div>
+      </div>
+    ))}
+  </div>
+);
+
+export default React.memo(TestimonialSlider);

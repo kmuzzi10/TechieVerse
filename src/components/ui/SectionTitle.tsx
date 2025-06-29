@@ -15,11 +15,11 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
 }) => {
   return (
     <div className={`mb-10 md:mb-12 ${centered ? 'text-center' : ''} ${className}`}>
-      <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800 animate-on-scroll">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-800 dark:text-white">
         {title}
       </h2>
       {subtitle && (
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto animate-on-scroll">
+        <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
           {subtitle}
         </p>
       )}
@@ -27,4 +27,4 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
   );
 };
 
-export default SectionTitle;
+export default React.memo(SectionTitle);

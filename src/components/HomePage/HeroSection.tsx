@@ -74,60 +74,85 @@ const techShapes = [
   ) }, // code bracket
 ];
 
-const HeroSection: React.FC = () => (
-  <motion.section
-    initial={{ opacity: 0, y: 40 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.7, ease: "easeOut" }}
-    className="relative min-h-screen flex items-center justify-center overflow-hidden"
-  >
-    <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 animate-pulse-slow"></div>
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-500/5 via-transparent to-transparent animate-pulse-slow"></div>
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_var(--tw-gradient-stops))] from-secondary-500/5 via-transparent to-transparent animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
-    <div className="container-custom relative z-10 flex flex-col items-center justify-center min-h-[60vh] text-center">
-      {/* 3D Tech Animated Background */}
-      <div className="pointer-events-none absolute inset-0 z-0">
-        {techShapes.map((shape, i) => (
-          <motion.div
-            key={i}
-            style={{ position: 'absolute', ...shape.style }}
-            initial={{ y: 0, scale: 1, opacity: 0.7 }}
-            animate={{ y: [0, -20, 0], scale: [1, 1.08, 1], opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 6, repeat: Infinity, delay: shape.delay, ease: "easeInOut" }}
+const HeroSection: React.FC = () => {
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 animate-pulse-slow"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-500/5 via-transparent to-transparent animate-pulse-slow"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_var(--tw-gradient-stops))] from-secondary-500/5 via-transparent to-transparent animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+      
+      <div className="container-custom relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center px-4 sm:px-6 lg:px-8">
+        {/* 3D Tech Animated Background - Hidden on mobile for performance */}
+        <div className="pointer-events-none absolute inset-0 z-0 hidden md:block">
+          {techShapes.map((shape, i) => (
+            <motion.div
+              key={i}
+              style={{ position: 'absolute', ...shape.style }}
+              initial={{ y: 0, scale: 1, opacity: 0.7 }}
+              animate={{ y: [0, -20, 0], scale: [1, 1.08, 1], opacity: [0.7, 1, 0.7] }}
+              transition={{ duration: 6, repeat: Infinity, delay: shape.delay, ease: "easeInOut" }}
+            >
+              {shape.svg}
+            </motion.div>
+          ))}
+        </div>
+        
+        <div className="relative z-10 w-full flex flex-col items-center justify-center">
+          {/* Soft blur/glow behind text */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] sm:w-[80vw] h-32 sm:h-40 md:h-64 rounded-full bg-gradient-to-r from-primary-400/30 via-secondary-400/20 to-accent-400/30 blur-2xl opacity-70 -z-10"></div>
+          
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-secondary-500 to-accent-400 drop-shadow-[0_4px_32px_rgba(59,130,246,0.25)] dark:text-white leading-tight sm:leading-tight"
           >
-            {shape.svg}
+            Transform Your Future with Tech Education
+          </motion.h1>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto px-4 sm:px-0 leading-relaxed"
+          >
+            Join our comprehensive training programs and master the skills needed for a successful career in technology.
+          </motion.p>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto px-4 sm:px-0"
+          >
+            <Button 
+              variant="primary" 
+              size="lg" 
+              className="animate-float hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto min-h-[48px] text-base sm:text-lg"
+              to="/contact"
+            >
+              Get Started
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="hover:scale-105 transition-transform duration-300 border-2 w-full sm:w-auto min-h-[48px] text-base sm:text-lg"
+              to="/services"
+            >
+              Learn More
+            </Button>
           </motion.div>
-        ))}
-      </div>
-      <div className="relative z-10 w-full flex flex-col items-center justify-center">
-        {/* Soft blur/glow behind text */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-40 md:h-64 rounded-full bg-gradient-to-r from-primary-400/30 via-secondary-400/20 to-accent-400/30 blur-2xl opacity-70 -z-10"></div>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 animate-on-scroll bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-secondary-500 to-accent-400 drop-shadow-[0_4px_32px_rgba(59,130,246,0.25)] dark:text-white" >Transform Your Future with Tech Education</h1>
-        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 animate-on-scroll max-w-2xl mx-auto">
-          Join our comprehensive training programs and master the skills needed for a successful career in technology.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
-          <Button 
-            variant="primary" 
-            size="lg" 
-            className="animate-float hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
-            to="/contact"
-          >
-            Get Started
-          </Button>
-          <Button 
-            variant="outline" 
-            size="lg" 
-            className="hover:scale-105 transition-transform duration-300 border-2"
-            to="/services"
-          >
-            Learn More
-          </Button>
         </div>
       </div>
-    </div>
-    <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-gray-900 to-transparent"></div>
-  </motion.section>
-);
+      
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-gray-900 to-transparent"></div>
+    </motion.section>
+  );
+};
 
 export default HeroSection; 
