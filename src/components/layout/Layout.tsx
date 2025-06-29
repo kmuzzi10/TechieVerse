@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Analytics } from "@vercel/analytics/next";
 
 const Layout: React.FC = () => {
   const location = useLocation();
@@ -24,6 +25,7 @@ const Layout: React.FC = () => {
         </AnimatePresence>
       </main>
       <Footer />
+      <Analytics />
     </div>
   );
 };
