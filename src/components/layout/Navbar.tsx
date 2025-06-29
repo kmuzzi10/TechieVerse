@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, GraduationCap, Sun, Moon } from 'lucide-react';
-import { useDarkMode } from '../../context/darkModeProvidor'; // adjust the path if needed
+import { useDarkMode } from '../../context/darkModeProvider'; // adjust the path if needed
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
 
 type ButtonVariant = 'primary' | 'secondary' | 'accent' | 'outline';
 type ButtonSize = 'sm' | 'md' | 'lg';
@@ -49,21 +50,27 @@ const Button: React.FC<ButtonProps> = ({
   
   if (to) {
     return (
-      <Link to={to} className={classes}>
+      <motion.a
+        href={to}
+        whileHover={{ scale: 1.06 }}
+        whileTap={{ scale: 0.96 }}
+        className={classes}
+      >
         {children}
-      </Link>
+      </motion.a>
     );
   }
   
   return (
-    <button
-      type={type}
+    <motion.button
+      whileHover={{ scale: 1.06 }}
+      whileTap={{ scale: 0.96 }}
       className={classes}
       onClick={onClick}
       disabled={disabled}
     >
       {children}
-    </button>
+    </motion.button>
   );
 };
 

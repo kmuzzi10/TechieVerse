@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from "framer-motion";
 
 interface CardProps {
   children: React.ReactNode;
@@ -12,9 +13,13 @@ const Card: React.FC<CardProps> = ({
   hoverable = true,
 }) => {
   return (
-    <div className={`bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden card-3d ${hoverable ? 'hover-3d' : ''} ${className}`}>
+    <motion.div
+      whileHover={{ scale: 1.03, boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}
+      whileTap={{ scale: 0.98 }}
+      className={`bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden card-3d ${hoverable ? 'hover-3d' : ''} ${className}`}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 };
 
