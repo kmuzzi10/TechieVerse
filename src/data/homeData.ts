@@ -122,7 +122,7 @@ export const courses = [
     technologies: "Flutter + MERN Stack",
     duration: "8 months",
     frequency: "2 classes/week",
-    price: "PKR 8000/month",
+    price: "PKR 5000/month",
     image:
       "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     color: "bg-accent-500",

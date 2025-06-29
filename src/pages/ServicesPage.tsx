@@ -60,7 +60,7 @@ const ServicesPage: React.FC = () => {
       description: 'A comprehensive program that combines mobile development with Flutter and backend development with the MERN stack.',
       duration: '6 months',
       classes: '2 classes/week',
-      price: 'PKR 8000/month',
+      price: 'PKR 5000/month',
       color: 'bg-accent-500',
       features: [
         'Mobile UI development with Flutter',
