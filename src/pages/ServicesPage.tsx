@@ -4,6 +4,7 @@ import Button from '../components/ui/Button';
 import { CheckCircle, Users, Award, Briefcase, Monitor, Code, Package, DollarSign, Calendar, Clock } from 'lucide-react';
 import Card from '../components/ui/Card';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const CustomCard: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (
   <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform ease hover:scale-105 ${className}`}>
@@ -218,9 +219,10 @@ const ServicesPage: React.FC = () => {
                             <span className="dark:text-white"><strong>Fee:</strong> {course.price}</span>
                           </div>
                         </div>
-                        <button onClick={() => window.location.href = '/contact'} className="bg-primary-500 text-white px-4 py-2 rounded-md hover:bg-primary-600 transition-colors duration-300">
+                        {/* Replace button with Link for client-side navigation */}
+                        <Link to="/contact" className="bg-primary-500 text-white px-4 py-2 rounded-md hover:bg-primary-600 transition-colors duration-300 inline-block text-center">
                           Enroll Now
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>

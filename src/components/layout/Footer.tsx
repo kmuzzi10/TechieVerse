@@ -115,8 +115,14 @@ const Footer: React.FC = () => {
                 </button>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-primary-400 transition-colors text-left w-full py-2 px-3 rounded-lg hover:bg-primary-900/10 focus:outline-none focus:ring-2 focus:ring-primary-500 min-h-[44px] flex items-center">
-                👨🏻‍💼 1-1 Consultations
+                <Link
+                  to="/contact"
+                  className="text-gray-300 hover:text-primary-400 transition-colors text-left w-full py-2 px-3 rounded-lg hover:bg-primary-900/10 focus:outline-none focus:ring-2 focus:ring-primary-500 min-h-[44px] block"
+                >
+                  <span className="inline-flex items-center">
+                    <span role="img" aria-label="consultation" className="mr-2">👨🏻‍💼</span>
+                    1-1 Consultations
+                  </span>
                 </Link>
               </li>
             </ul>
