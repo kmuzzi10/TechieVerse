@@ -10,7 +10,6 @@ import CounterTest from './pages/CounterTest';
 // Optional: Add a NotFound page
 import NotFoundPage from './pages/NotFoundPage'; 
 import { useLoading } from './context/LoadingContext';
-import avatar1 from './assets/avatar1.png';
 
 function App() {
   const location = useLocation();
@@ -24,7 +23,7 @@ function App() {
   }, [location.pathname, setLoading]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowWelcome(false), 2000); // Show for 2 seconds
+    const timer = setTimeout(() => setShowWelcome(false), 2500); // Show for 2 seconds
     return () => clearTimeout(timer);
   }, []);
 
@@ -37,12 +36,13 @@ function App() {
           left: 0,
           width: '100vw',
           height: '100vh',
-          background: 'radial-gradient(circle at 60% 40%, #a5b4fc 0%, #f0abfc 40%, #f9fafb 100%)',
+          background: 'radial-gradient(circle at 60% 40%, #101624 0%, #1e293b 60%, #0f172a 100%)',
           zIndex: 9999,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
+          transition: 'background 0.6s',
         }}>
           {/* Animated Glow Behind Card */}
           <div style={{
@@ -53,8 +53,8 @@ function App() {
             width: '420px',
             height: '240px',
             borderRadius: '2.5rem',
-            background: 'radial-gradient(circle, #a5b4fc55 0%, #f0abfc33 60%, transparent 100%)',
-            filter: 'blur(32px)',
+            background: 'radial-gradient(circle, #0ea5e955 0%, #6366f155 60%, transparent 100%)',
+            filter: 'blur(40px)',
             opacity: 0.7,
             zIndex: 1,
             animation: 'glowPulse 2.5s infinite alternate',
@@ -63,13 +63,13 @@ function App() {
           {/* 3D Card Popup with Glassmorphism */}
           <div
             style={{
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.85) 60%, rgba(224,231,255,0.85) 100%)',
+              background: 'linear-gradient(135deg, rgba(30,41,59,0.96) 60%, rgba(16,24,39,0.98) 100%)',
               borderRadius: '2rem',
               padding: '2.5rem 3.5rem',
-              boxShadow: '0 24px 64px 0 rgba(59,130,246,0.22), 0 2px 8px rgba(168,139,250,0.10)',
+              boxShadow: '0 24px 64px 0 #0ea5e955, 0 2px 8px #6366f155',
               fontSize: '2.1rem',
               fontWeight: 800,
-              color: '#3730a3',
+              color: '#f1f5f9',
               textAlign: 'center',
               minWidth: '340px',
               maxWidth: '90vw',
@@ -81,63 +81,50 @@ function App() {
               alignItems: 'center',
               justifyContent: 'center',
               zIndex: 2,
-              backdropFilter: 'blur(16px) saturate(1.2)',
-              WebkitBackdropFilter: 'blur(16px) saturate(1.2)',
+              backdropFilter: 'blur(24px) saturate(1.2)',
+              WebkitBackdropFilter: 'blur(24px) saturate(1.2)',
               animation: 'popupIn 0.7s cubic-bezier(.25,.8,.25,1)',
+              border: '1.5px solid #334155',
             }}
           >
-            {/* 3D SVG Logos Row */}
-            <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginBottom: '1.2rem' }}>
-              {/* Graduation Cap SVG */}
-              <svg width="48" height="48" viewBox="0 0 44 44" fill="none" style={{ filter: 'drop-shadow(0 4px 16px #6366f1aa)' }}>
-                <g filter="url(#capShadow)">
-                  <path d="M22 8L40 16L22 24L4 16L22 8Z" fill="url(#capGrad)" stroke="#6366f1" strokeWidth="2"/>
-                  <rect x="16" y="24" width="12" height="6" rx="2" fill="#6366f1" fillOpacity="0.12" stroke="#6366f1" strokeWidth="2"/>
-                  <path d="M22 24V32" stroke="#6366f1" strokeWidth="2" strokeLinecap="round"/>
-                  <circle cx="22" cy="34" r="2" fill="#6366f1" fillOpacity="0.18"/>
-                </g>
-                <defs>
-                  <linearGradient id="capGrad" x1="22" y1="8" x2="22" y2="24" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#a5b4fc"/>
-                    <stop offset="1" stopColor="#6366f1"/>
-                  </linearGradient>
-                  <filter id="capShadow" x="0" y="4" width="44" height="36" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                    <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#6366f1" floodOpacity="0.12"/>
-                  </filter>
-                </defs>
-              </svg>
-              {/* Rocket SVG */}
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style={{ filter: 'drop-shadow(0 4px 16px #f472b6aa)' }}>
-                <g filter="url(#rocketShadow)">
-                  <path d="M24 6C30 12 36 30 24 42C12 30 18 12 24 6Z" fill="url(#rocketGrad)" stroke="#f472b6" strokeWidth="2"/>
-                  <circle cx="24" cy="18" r="3" fill="#fff" stroke="#f472b6" strokeWidth="1.5"/>
-                </g>
-                <defs>
-                  <linearGradient id="rocketGrad" x1="24" y1="6" x2="24" y2="42" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#f9a8d4"/>
-                    <stop offset="1" stopColor="#f472b6"/>
-                  </linearGradient>
-                  <filter id="rocketShadow" x="10" y="4" width="28" height="40" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                    <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#f472b6" floodOpacity="0.12"/>
-                  </filter>
-                </defs>
-              </svg>
-              {/* Laptop SVG */}
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style={{ filter: 'drop-shadow(0 4px 16px #10b981aa)' }}>
-                <g filter="url(#laptopShadow)">
-                  <rect x="10" y="16" width="28" height="14" rx="3" fill="url(#laptopGrad)" stroke="#10b981" strokeWidth="2"/>
-                  <rect x="6" y="32" width="36" height="4" rx="2" fill="#10b981" fillOpacity="0.12" stroke="#10b981" strokeWidth="2"/>
-                </g>
-                <defs>
-                  <linearGradient id="laptopGrad" x1="24" y1="16" x2="24" y2="30" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#6ee7b7"/>
-                    <stop offset="1" stopColor="#10b981"/>
-                  </linearGradient>
-                  <filter id="laptopShadow" x="4" y="14" width="40" height="24" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                    <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#10b981" floodOpacity="0.12"/>
-                  </filter>
-                </defs>
-              </svg>
+            {/* Top 3 floating emojis */}
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'flex-end',
+              gap: '2.2rem',
+              marginBottom: '0.7rem',
+              marginTop: '-2.2rem',
+              position: 'relative',
+              zIndex: 3,
+            }}>
+              <span style={{
+                fontSize: '2.7rem',
+                filter: 'drop-shadow(0 6px 24px #0ea5e9cc) drop-shadow(0 2px 8px #0ea5e988)',
+                transform: 'rotate(-12deg) scale(1.08)',
+                background: 'radial-gradient(circle, #0ea5e9 60%, transparent 100%)',
+                borderRadius: '50%',
+                padding: '0.1em 0.2em',
+                display: 'inline-block',
+              } as React.CSSProperties}>💡</span>
+              <span style={{
+                fontSize: '3.1rem',
+                filter: 'drop-shadow(0 8px 32px #6366f1cc) drop-shadow(0 2px 8px #6366f188)',
+                transform: 'rotate(6deg) scale(1.13)',
+                background: 'radial-gradient(circle, #6366f1 60%, transparent 100%)',
+                borderRadius: '50%',
+                padding: '0.1em 0.2em',
+                display: 'inline-block',
+              } as React.CSSProperties}>🚀</span>
+              <span style={{
+                fontSize: '2.7rem',
+                filter: 'drop-shadow(0 6px 24px #22d3eecc) drop-shadow(0 2px 8px #22d3ee88)',
+                transform: 'rotate(10deg) scale(1.08)',
+                background: 'radial-gradient(circle, #22d3ee 60%, transparent 100%)',
+                borderRadius: '50%',
+                padding: '0.1em 0.2em',
+                display: 'inline-block',
+              } as React.CSSProperties}>💻</span>
             </div>
             {/* Beautifully styled headline */}
             <span style={{
@@ -146,16 +133,15 @@ function App() {
               letterSpacing: '0.03em',
               marginBottom: '0.5rem',
               display: 'block',
-              background: 'linear-gradient(90deg, #6366f1 30%, #f472b6 60%, #10b981 100%)',
+              background: 'linear-gradient(90deg, #0ea5e9 30%, #6366f1 60%, #22d3ee 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-              textFillColor: 'transparent',
-              textShadow: '0 2px 16px #a5b4fc55',
+              textShadow: '0 2px 16px #0ea5e955',
             }}>
               Welcome to the Techieverse
             </span>
-            <span style={{fontSize: '1.2rem', color: '#6366f1', marginBottom: '0.5rem', display: 'block'}}>
+            <span style={{fontSize: '1.2rem', color: '#38bdf8', marginBottom: '0.5rem', display: 'block'}}>
               <span role="img" aria-label="party">✨</span> Learn. Build. Innovate. <span role="img" aria-label="rocket">🚀</span>
             </span>
             {/* Decorative floating emoji for 3D effect */}
@@ -164,28 +150,28 @@ function App() {
               top: '-1.5rem',
               left: '-1.5rem',
               fontSize: '2.2rem',
-              filter: 'drop-shadow(0 4px 16px #a5b4fc88)'
+              filter: 'drop-shadow(0 4px 16px #0ea5e988)'
             }}>💡</span>
             <span style={{
               position: 'absolute',
               bottom: '-1.5rem',
               right: '-1.5rem',
               fontSize: '2.2rem',
-              filter: 'drop-shadow(0 4px 16px #f472b688)'
+              filter: 'drop-shadow(0 4px 16px #6366f188)'
             }}>🦄</span>
             <span style={{
               position: 'absolute',
               top: '-1.5rem',
               right: '-1.5rem',
               fontSize: '2.2rem',
-              filter: 'drop-shadow(0 4px 16px #fbbf2488)'
+              filter: 'drop-shadow(0 4px 16px #22d3ee88)'
             }}>💻</span>
             <span style={{
               position: 'absolute',
               bottom: '-1.5rem',
               left: '-1.5rem',
               fontSize: '2.2rem',
-              filter: 'drop-shadow(0 4px 16px #10b98188)'
+              filter: 'drop-shadow(0 4px 16px #38bdf888)'
             }}>🌟</span>
           </div>
           {/* Keyframes for animation (inject as style tag) */}
@@ -195,8 +181,8 @@ function App() {
               100% { opacity: 1; transform: perspective(900px) scale(1.04) rotateX(8deg) rotateY(-8deg); }
             }
             @keyframes glowPulse {
-              0% { opacity: 0.7; filter: blur(32px); }
-              100% { opacity: 1; filter: blur(40px); }
+              0% { opacity: 0.7; filter: blur(40px); }
+              100% { opacity: 1; filter: blur(48px); }
             }
           `}</style>
         </div>
