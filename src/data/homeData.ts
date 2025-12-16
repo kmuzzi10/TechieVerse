@@ -127,4 +127,14 @@ export const courses = [
       "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     color: "bg-accent-500",
   },
-]; 
+  {
+    title: "🤖 AIverse: Artificial Intelligence Mastery",
+    technologies: "Python, Machine Learning, Deep Learning, LLMs",
+    duration: "4–6 months",
+    frequency: "2 classes/week",
+    price: "PKR 6000/month",
+    image:
+      "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    color: "bg-indigo-500",
+  },
+];

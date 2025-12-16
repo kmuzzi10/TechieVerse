@@ -28,9 +28,25 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
   const nextRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [reduceMotion, setReduceMotion] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduceMotion(mediaQuery.matches);
+    const handler = (event: MediaQueryListEvent) => setReduceMotion(event.matches);
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
+
+  useEffect(() => {
+    setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
+  }, []);
 
   // Track mouse movement for 3D effect
   useEffect(() => {
+    if (reduceMotion || isTouchDevice) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current) return;
       
@@ -54,7 +70,7 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
         container.removeEventListener('mousemove', handleMouseMove);
       }
     };
-  }, []);
+  }, [reduceMotion, isTouchDevice]);
 
   return (
     <div 
@@ -65,40 +81,46 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
       }}
     >
       {/* 3D Background Elements */}
-      <div className="testimonial-bg-wrapper">
-        <div 
-          className="testimonial-bg-element bg-element-1"
-          style={{
-            transform: `translate3d(${mousePosition.x * -15}px, ${mousePosition.y * -15}px, 0) rotateX(${mousePosition.y * 5}deg) rotateY(${mousePosition.x * -5}deg)`
-          }}
-        ></div>
-        <div 
-          className="testimonial-bg-element bg-element-2"
-          style={{
-            transform: `translate3d(${mousePosition.x * -25}px, ${mousePosition.y * -25}px, 0) rotateX(${mousePosition.y * 8}deg) rotateY(${mousePosition.x * -8}deg)`
-          }}
-        ></div>
-        <div 
-          className="testimonial-bg-element bg-element-3"
-          style={{
-            transform: `translate3d(${mousePosition.x * -5}px, ${mousePosition.y * -5}px, 0) rotateX(${mousePosition.y * 2}deg) rotateY(${mousePosition.x * -2}deg)`
-          }}
-        ></div>
-      </div>
+      {!reduceMotion && !isTouchDevice && (
+        <div className="testimonial-bg-wrapper">
+          <div 
+            className="testimonial-bg-element bg-element-1"
+            style={{
+              transform: `translate3d(${mousePosition.x * -15}px, ${mousePosition.y * -15}px, 0) rotateX(${mousePosition.y * 5}deg) rotateY(${mousePosition.x * -5}deg)`
+            }}
+          ></div>
+          <div 
+            className="testimonial-bg-element bg-element-2"
+            style={{
+              transform: `translate3d(${mousePosition.x * -25}px, ${mousePosition.y * -25}px, 0) rotateX(${mousePosition.y * 8}deg) rotateY(${mousePosition.x * -8}deg)`
+            }}
+          ></div>
+          <div 
+            className="testimonial-bg-element bg-element-3"
+            style={{
+              transform: `translate3d(${mousePosition.x * -5}px, ${mousePosition.y * -5}px, 0) rotateX(${mousePosition.y * 2}deg) rotateY(${mousePosition.x * -2}deg)`
+            }}
+          ></div>
+        </div>
+      )}
 
       <Swiper
-        effect={"coverflow"}
+        effect={reduceMotion ? "slide" : "coverflow"}
         grabCursor={true}
         centeredSlides={true}
         loop={true}
         slidesPerView={"auto"}
-        coverflowEffect={{
-          rotate: 5,
-          stretch: 0,
-          depth: 100,
-          modifier: 2.5,
-          slideShadows: true,
-        }}
+        coverflowEffect={
+          reduceMotion
+            ? undefined
+            : {
+                rotate: 5,
+                stretch: 0,
+                depth: 100,
+                modifier: 2.5,
+                slideShadows: true,
+              }
+        }
         pagination={{
           el: ".testimonial-pagination",
           clickable: true,
@@ -124,7 +146,9 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
             <div 
               className="testimonial-card"
               style={{
-                transform: `perspective(1000px) rotateX(${mousePosition.y * -3}deg) rotateY(${mousePosition.x * 3}deg)`,
+                transform: !reduceMotion && !isTouchDevice
+                  ? `perspective(1000px) rotateX(${mousePosition.y * -3}deg) rotateY(${mousePosition.x * 3}deg)`
+                  : undefined,
                 transition: 'transform 0.1s ease-out'
               }}
             >

@@ -71,8 +71,29 @@ const ServicesPage: React.FC = () => {
         'State management in mobile apps',
         'Authentication and security best practices'
       ]
+    },
+    {
+      id: 4,
+      title: '🤖 AIverse: Artificial Intelligence Mastery',
+      technologies: 'Python, Machine Learning, Deep Learning, LLMs',
+      description: 'A complete, project-based AI program that takes students from zero to building real-world AI systems, chatbots, and intelligent applications.',
+      duration: '4–6 months',
+      classes: '2 classes/week',
+      price: 'PKR 6000/month',
+      color: 'bg-indigo-500',
+      features: [
+        'Python & data foundations for AI',
+        'Machine Learning & model evaluation',
+        'Deep Learning & Neural Networks',
+        'Natural Language Processing (NLP)',
+        'Computer Vision & image classification',
+        'Chatbots, LLMs & RAG systems',
+        'AI automation & workflows',
+        'Capstone AI project with demo day'
+      ]
     }
   ];
+  
 
   const extraServices = [
     {
